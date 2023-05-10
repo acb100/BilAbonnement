@@ -1,0 +1,64 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+/* Color variables declaration */
+body{
+    --white_smoke: #F5F5F5;
+    --onyx: #3D3D3D;
+    --picton_blue: #29AEE4;
+    --blue: #1892C3;
+    --indigo_dye: #0B445B;
+}
+
+/* Top header css with margin to push it away from sidebar */
+#top_header{
+    width: 100%;
+    left: 160px;
+    top: 0;
+    padding: 20px 10px;
+    background-color: var(--onyx);
+    position: fixed;
+}
+
+/* sidebar navigation menu */
+#sidenav{
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: var(--indigo_dye);
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+/* sidebar links */
+#sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: var(--picton_blue);
+    display: flex;
+}
+
+/* sidebar link color change */
+#sidenav a:hover, a:active {
+    background-color: #093a4e;
+}
+
+/* padding for aligning main content with headers */
+main{
+    padding: 0px 10px;
+    margin-left: 160px;
+    margin-top: 100px;
+    background-color: var(--white_smoke);
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}

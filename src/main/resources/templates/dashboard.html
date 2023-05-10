@@ -3,49 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="/styles/header.css">
     <link rel="stylesheet" type="text/css" href="/styles/Main.css">
 </head>
 <body>
+<!--Header with sidebar and top header-->
 <header>
-    <div class="box_menuBar">
-        <img src="/styles/images/WishWorld_Icon.png" alt="E" class="icon_menuBar">
+    <nav id="sidenav">
+        <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Clients</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <div id="top_header">
+        <h1>Hello</h1>
     </div>
 </header>
 <main>
-    <div class="top-bar">
-        <form action="/index" method="post">
-            <div class="input_box">
-                <label for="username"></label>
-                <input type="text" class="username_input" name="username" id="username"
-                       placeholder="E-mail eller brugernavn"><br>
-                <input type="password" class="password_input" name="password" id="password"
-                       placeholder="Adgangskode"><br>
-            </div>
-            <input type="submit" value="Login" class="login_button">
-            <a class="opret_button" href="#popup1">Opret</a>
-        </form>
-        <span th:text="${error}" class="wrong_userInput"></span>
-    </div>
+    <h2>Sidebar</h2>
+    <p>This sidebar is of full height (100%) and always shown.</p>
+    <p>Scroll down the page to see the result.</p>
+    <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque
+        et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus
+        repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+    <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque
+        et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus
+        repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+    <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque
+        et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus
+        repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+    <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque
+        et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus
+        repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+    <p>jknnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn</p>
+    <p>jknnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn</p>
 
-    <div id="popup1" class="overlay">
-        <div class="popup">
-            <h2>Indtast oplysninger</h2>
-            <a class="close" href="#">&times;</a>
-            <div class="input_box">
-                <form action="/createUser" method="post">
-                    <input type="text" class="fname" name="first_name" placeholder="Fornavn">
-                    <input type="text" class="lname" name="last_name" placeholder="Efternavn">
-                    <input type="text" class="email" name="email" placeholder="E-mailadresse">
-                    <input type="text" class="username" name="username" placeholder="Brugernavn">
-                    <input type="text" class="password" name="passcode" placeholder="Adgangskode">
-                    <input type="submit" value="Opret" class="login_button">
-                </form>
-                <div th:if="${show_popup1}">
-                    <span th:text="${error_username}" class="wrong_userInput"></span>
-                </div>
-            </div>
-        </div>
-    </div>
+    <p>jknnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn</p>
 </main>
 <footer>
 
