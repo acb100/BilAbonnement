@@ -13,4 +13,24 @@ public class Controller {
     public String index() {
         return "index";
     }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+    @GetMapping("/register")
+    public String register() {
+        return "register";
+    }
+
+    @GetMapping("/dashboard")
+    public String dashboard() {
+        return "dashboard";
+    }
+
+    @GetMapping("/createRentalContract")
+    public String createRentalContract() {
+        return "createRentalContract";
+    }
 }
