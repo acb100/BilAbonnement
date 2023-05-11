@@ -1,5 +1,6 @@
 package com.example.bilabonnement.controller;
 
+import com.example.bilabonnement.model.Employee;
 import com.example.bilabonnement.service.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,7 @@ public class Controller {
     public String index(@RequestParam ("username") String employeeUsername, @RequestParam ("password") String employeePassword, HttpSession session) {
         if (service.getEmployee(employeeUsername, employeePassword) != null) {
             session.setAttribute("isLoggedIn", true);
+            session.setAttribute("employeeId", service.getEmployeeByUsername(employeeUsername).getEmployeeId());
             return "redirect:/dashboard";
         } else {
             return "redirect:/";
