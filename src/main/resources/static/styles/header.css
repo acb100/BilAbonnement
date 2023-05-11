@@ -5,7 +5,8 @@
 }
 
 /* Color variables declaration */
-body{
+body {
+    font-family: "Montserrat", sans-serif;
     --white_smoke: #F5F5F5;
     --onyx: #3D3D3D;
     --picton_blue: #29AEE4;
@@ -14,17 +15,18 @@ body{
 }
 
 /* Top header css with margin to push it away from sidebar */
-#top_header{
+#top_header {
     width: 100%;
     left: 160px;
     top: 0;
     padding: 20px 10px;
     background-color: var(--onyx);
     position: fixed;
+    display: flex;
 }
 
 /* sidebar navigation menu */
-#sidenav{
+#sidenav {
     height: 100%;
     width: 160px;
     position: fixed;
@@ -51,7 +53,7 @@ body{
 }
 
 /* padding for aligning main content with headers */
-main{
+main {
     padding: 0px 10px;
     margin-left: 160px;
     margin-top: 100px;
@@ -59,6 +61,11 @@ main{
 }
 
 @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
 }

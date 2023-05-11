@@ -21,9 +21,20 @@ public class Repository {
 
     }
 
-    public Employee getEmployee(int employeeId){
+    public Employee getEmployeeByID(int employeeId){
         String sql = "SELECT * FROM employee WHERE employee_id = ?";
         RowMapper<Employee> rowMapper = new BeanPropertyRowMapper<>(Employee.class);
         return template.queryForObject(sql, rowMapper, employeeId);
+    }
+
+    public Employee getEmployeeByUsername(String username){
+        String sql = "SELECT * FROM employee WHERE employee_username = ?";
+        RowMapper<Employee> rowMapper = new BeanPropertyRowMapper<>(Employee.class);
+        return template.queryForObject(sql, rowMapper, username);
+    }
+
+    public Boolean getEmployee(String employeeUsername, String employeePassword) {
+        String sql = "SELECT COUNT(*) FROM employee WHERE employee_username = ? AND BINARY employee_password = ?";
+        return template.queryForObject(sql, Integer.class,employeeUsername, employeePassword) > 0;
     }
 }

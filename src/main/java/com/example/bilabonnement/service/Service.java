@@ -15,7 +15,15 @@ public class Service {
         repo.addRentalContract(rentalContract);
     }
 
-    public Employee getEmployee(int employeeId){
-        return repo.getEmployee(employeeId);
+    public Employee getEmployeeByID(int employeeId){
+        return repo.getEmployeeByID(employeeId);
+    }
+
+    public Employee getEmployeeByUsername(String username){
+        return repo.getEmployeeByUsername(username);
+    }
+
+    public Boolean getEmployee(String employeeUsername, String employeePassword) {
+        return repo.getEmployee(employeeUsername, employeePassword);
     }
 }
