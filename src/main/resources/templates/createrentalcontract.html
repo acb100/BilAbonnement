@@ -10,6 +10,16 @@
 
 </header>
 <main>
+    <div>
+        <form action="/createRentalContract" method="post">
+            <label>Enter start date</label>
+            <input type="text" name="startDate">
+            <label>Enter end date</label>
+            <input type="text" name="endDate">
+            <input type="text" th:value="${employeeId}" style="display:none">
+        </form>
+    </div>
+
 </main>
 <footer>
 </footer>

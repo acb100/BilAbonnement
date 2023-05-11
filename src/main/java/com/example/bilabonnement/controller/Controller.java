@@ -1,9 +1,18 @@
 package com.example.bilabonnement.controller;
 
+import com.example.bilabonnement.model.RentalContract;
+import com.example.bilabonnement.model.Employee;
 import com.example.bilabonnement.model.Employee;
 import com.example.bilabonnement.service.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,20 +45,28 @@ public class Controller {
     }
 
     @GetMapping("/dashboard")
-    public String dashboard(HttpSession session) {
+    public String dashboard(Model model,HttpSession session) {
         Boolean isLoggedIn = (Boolean) session.getAttribute("isLoggedIn");
         if (isLoggedIn == null || !isLoggedIn) {
             return "redirect:/login";
         }
+        model.addAttribute("employeeId", session.getAttribute("employeeId"));
         return "dashboard";
     }
 
-    @GetMapping("/createRentalContract")
-    public String createRentalContract(HttpSession session) {
+    @PostMapping("/createRentalContract")
+    public String createRentalContract(@ModelAttribute RentalContract rentalContract) {
+        service.addRentalContract(rentalContract);
+        return "redirect:/dashboard";
+    }
+
+    @GetMapping("/createContractPage")
+    public String createContractPage(HttpSession session){
         Boolean isLoggedIn = (Boolean) session.getAttribute("isLoggedIn");
         if (isLoggedIn == null || !isLoggedIn) {
-            return "redirect:/login";
+            return "redirect:/";
+        } else {
+            return "redirect:/createrentalcontract";
         }
-        return "createRentalContract";
     }
 }
