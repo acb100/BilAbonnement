@@ -13,8 +13,10 @@ public class RentalContract {
     private int carId;
     private int damageReportId;
     private int discountId;
+    private boolean isOngoing;
 
-    public RentalContract(int rentalContractId, Date startDate, Date endDate, String subscriptionId, int employeeId, int customerId, int carId, int damageReportId, int discountId, String subscriptionType) {
+    public RentalContract(int rentalContractId, Date startDate, Date endDate, String subscriptionId, int employeeId,
+                          int customerId, int carId, int damageReportId, int discountId, String subscriptionType, boolean isOngoing) {
         this.rentalContractId = rentalContractId;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -25,6 +27,14 @@ public class RentalContract {
         this.damageReportId = damageReportId;
         this.discountId = discountId;
         this.subscriptionType = subscriptionType;
+        this.isOngoing = isOngoing;
+    }
+    public boolean isOngoing() {
+        return isOngoing;
+    }
+
+    public void setOngoing(boolean ongoing) {
+        isOngoing = ongoing;
     }
 
     public int getRentalContractId() {
