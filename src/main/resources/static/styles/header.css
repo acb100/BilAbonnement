@@ -42,7 +42,7 @@ body {
 #sidenav a {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 20px;
     color: var(--picton_blue);
     display: flex;
 }
@@ -61,11 +61,11 @@ main {
 }
 
 @media screen and (max-height: 450px) {
-    .sidenav {
+    #sidenav {
         padding-top: 15px;
     }
 
-    .sidenav a {
+    #sidenav a {
         font-size: 18px;
     }
 }

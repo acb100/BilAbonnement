@@ -39,7 +39,7 @@ public class Controller {
     public String dashboard(HttpSession session) {
         Boolean isLoggedIn = (Boolean) session.getAttribute("isLoggedIn");
         if (isLoggedIn == null || !isLoggedIn) {
-            return "redirect:/login";
+            return "redirect:/";
         }
         return "dashboard";
     }
@@ -48,7 +48,7 @@ public class Controller {
     public String createRentalContract(HttpSession session) {
         Boolean isLoggedIn = (Boolean) session.getAttribute("isLoggedIn");
         if (isLoggedIn == null || !isLoggedIn) {
-            return "redirect:/login";
+            return "redirect:/";
         }
         return "createRentalContract";
     }
