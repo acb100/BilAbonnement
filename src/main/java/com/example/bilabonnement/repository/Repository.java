@@ -1,8 +1,11 @@
 package com.example.bilabonnement.repository;
 
+import com.example.bilabonnement.model.Employee;
 import com.example.bilabonnement.model.RentalContract;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 
 @org.springframework.stereotype.Repository
 public class Repository {
@@ -16,5 +19,11 @@ public class Repository {
             true, rentalContract.getEmployeeId(), rentalContract.getSubscriptionId(), rentalContract.getCustomerId(),
             rentalContract.getCarId(), rentalContract.getDamageReportId());
 
+    }
+
+    public Employee getEmployee(int employeeId){
+        String sql = "SELECT * FROM employee WHERE employee_id = ?";
+        RowMapper<Employee> rowMapper = new BeanPropertyRowMapper<>(Employee.class);
+        return template.queryForObject(sql, rowMapper, employeeId);
     }
 }
