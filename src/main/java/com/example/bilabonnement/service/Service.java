@@ -18,4 +18,8 @@ public class Service {
     public Employee getEmployee(int employeeId){
         return repo.getEmployee(employeeId);
     }
+
+    public Boolean getEmployee(String employeeUsername, String employeePassword) {
+        return repo.getEmployee(employeeUsername, employeePassword);
+    }
 }
