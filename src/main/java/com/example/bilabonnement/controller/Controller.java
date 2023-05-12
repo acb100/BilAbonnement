@@ -1,16 +1,19 @@
 package com.example.bilabonnement.controller;
 
 import com.example.bilabonnement.model.Employee;
+import com.example.bilabonnement.model.RentalContract;
 import com.example.bilabonnement.service.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @org.springframework.stereotype.Controller
 public class Controller {
+    //TODO refresh function for dashboard
     @Autowired
     Service service;
 
@@ -31,11 +34,6 @@ public class Controller {
         }
     }
 
-    @GetMapping("/register")
-    public String register() {
-        return "register";
-    }
-
     @GetMapping("/dashboard")
     public String dashboard(HttpSession session) {
         Boolean isLoggedIn = (Boolean) session.getAttribute("isLoggedIn");
@@ -52,6 +50,12 @@ public class Controller {
             return "redirect:/";
         }
         return "createRentalContract";
+    }
+
+    @PostMapping("/createRentalContract")
+    public String createRentalContract(@ModelAttribute RentalContract rentalContract) {
+        service.addRentalContract(rentalContract);
+        return "redirect:/dashboard";
     }
 
     @GetMapping("/logout")
