@@ -1,11 +1,10 @@
 package com.example.bilabonnement.controller;
 
-import com.example.bilabonnement.model.Employee;
 import com.example.bilabonnement.model.RentalContract;
 import com.example.bilabonnement.service.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @org.springframework.stereotype.Controller
 public class Controller {
     //TODO refresh function for dashboard
+    //TODO discuss renaming header css to main
     @Autowired
     Service service;
 
@@ -27,7 +27,7 @@ public class Controller {
         if (service.getEmployee(employeeUsername, employeePassword) != null) {
             session.setAttribute("isLoggedIn", true);
             session.setAttribute("employeeId", service.getEmployeeID(employeeUsername));
-            session.setAttribute("employeeUsername", service.getEmployee(employeeUsername).getEmployeeUsername());
+            session.setAttribute("employeeUsername", service.getEmployee(employeeUsername).getEmployee_username());
             return "redirect:/dashboard";
         } else {
             return "redirect:/";
@@ -44,11 +44,13 @@ public class Controller {
     }
 
     @GetMapping("/createRentalContract")
-    public String createRentalContract(HttpSession session) {
+    public String createRentalContract(HttpSession session, Model model) {
         Boolean isLoggedIn = (Boolean) session.getAttribute("isLoggedIn");
         if (isLoggedIn == null || !isLoggedIn) {
             return "redirect:/";
         }
+        model.addAttribute("customers", service.getAllCustomers());
+        //model.addAttribute("cars", service.getAllCars());
         return "createRentalContract";
     }
 

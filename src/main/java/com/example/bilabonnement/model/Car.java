@@ -6,39 +6,33 @@ import lombok.Setter;
 
 @Getter @Setter @NoArgsConstructor
 public class Car {
-    private int carId;
-    private int equipmentLevel;
-    private String vinNumber;
-    private double basePrice;
+    private int car_id;
+    private int equipment_level;
+    private String vin_nr;
+    private double base_price;
     private double vat;
     private double emission;
-    private int modelId;
-    private String modelName;
-    private String modelBrand;
-    private int brandId;
-    private String brandName;
+    private String model_name;
+    private String brand_name;
 
-    public Car(int carId, int equipmentLevel, String vinNumber, double basePrice, double vat, double emission, int modelId, String modelName, String modelBrand, int brandId, String brandName) {
-        this.carId = carId;
-        this.equipmentLevel = equipmentLevel;
-        this.vinNumber = vinNumber;
-        this.basePrice = basePrice;
+    public Car(int car_id, int equipment_level, String vin_nr, double base_price, double vat, double emission, int modelId, String model_name, String modelBrand, int brandId, String brand_name) {
+        this.car_id = car_id;
+        this.equipment_level = equipment_level;
+        this.vin_nr = vin_nr;
+        this.base_price = base_price;
         this.vat = vat;
         this.emission = emission;
-        this.modelId = modelId;
-        this.modelName = modelName;
-        this.modelBrand = modelBrand;
-        this.brandId = brandId;
-        this.brandName = brandName;
+        this.model_name = model_name;
+        this.brand_name = brand_name;
     }
 
     @Override
     public String toString() {
         return "{" +
-                " carId='" + getCarId() + "'" +
-                ", equipmentLevel='" + getEquipmentLevel() + "'" +
-                ", vinNumber='" + getVinNumber() + "'" +
-                ", basePrice='" + getBasePrice() + "'" +
+                " carId='" + getCar_id() + "'" +
+                ", equipmentLevel='" + getEquipment_level() + "'" +
+                ", vinNumber='" + getVin_nr() + "'" +
+                ", basePrice='" + getBase_price() + "'" +
                 ", vat='";
     }
 }
