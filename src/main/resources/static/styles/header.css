@@ -23,6 +23,13 @@ body {
     background-color: var(--onyx);
     position: fixed;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Top header right design */
+#top_header_right {
+
 }
 
 /* sidebar navigation menu */
@@ -50,6 +57,26 @@ body {
 /* sidebar link color change */
 #sidenav a:hover, a:active {
     background-color: #093a4e;
+}
+
+/* Small logo design */
+#small_logo{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 0px;
+    margin-bottom: 10px;
+    width: 50%;
+}
+
+/* Large logo design */
+#large_logo{
+    display: block;
+    width: 10%;
+}
+
+#profile_pic{
+width: 5%;
 }
 
 /* padding for aligning main content with headers */
