@@ -68,7 +68,6 @@ public class Controller {
             return "redirect:/";
         } else {
             return "redirect:/createrentalcontract";
-            return "redirect:/";
         }
     }
     @GetMapping("/viewRentalContracts/{employeeId}")
