@@ -52,4 +52,10 @@ public class Controller {
         }
         return "createRentalContract";
     }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session){
+        session.invalidate();
+        return "redirect:/";
+    }
 }
