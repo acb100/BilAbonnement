@@ -29,6 +29,12 @@ public class Service {
         return repo.getEmployee(employeeUsername, employeePassword);
     }
     public List<RentalContract> fetchAllRentalContractsForEmployee(int employeeId){
-        return fetchAllRentalContractsForEmployee(employeeId);
+        return repo.fetchAllRentalContractsForEmployee(employeeId);
+    }
+    public Boolean deleteRentalContract(int rentalContractId){
+        return repo.deleteRentalContract(rentalContractId);
+    }
+    public RentalContract findRentalContractById(int rentalContractId){
+        return repo.findRentalContractById(rentalContractId);
     }
 }

@@ -15,6 +15,7 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.net.http.HttpRequest;
 import java.util.List;
 
 @org.springframework.stereotype.Controller
@@ -47,7 +48,7 @@ public class Controller {
     public String dashboard(Model model,HttpSession session) {
         Boolean isLoggedIn = (Boolean) session.getAttribute("isLoggedIn");
         if (isLoggedIn == null || !isLoggedIn) {
-            return "redirect:/login";
+            return "redirect:/";
         }
         model.addAttribute("employeeId", session.getAttribute("employeeId"));
         return "dashboard";
@@ -76,5 +77,21 @@ public class Controller {
         model.addAttribute("contractlist", contractList);
         model.addAttribute("employeeId", id);
         return "contractoverviewpage";
+    }
+    @GetMapping("/deleteRentalContract/{contractId}")
+    public String deleteRentalContract(@PathVariable("contractId") int contractId){
+        boolean deleted = service.deleteRentalContract(contractId);
+        if(deleted){
+            return "redirect:/contractoverviewpage";
+        } else
+            return "redirect:/contractoverviewpage";
+
+    }
+    //TODO bliver ikke brugt lige nu, men kan bruges til at finde en enkelt contract gennem ID
+    @GetMapping("/viewRentalContract/{contractId}")
+    public String viewRentalContract(@PathVariable("contractId") int contractId, HttpServletRequest request, Model model){
+        HttpSession session = request.getSession();
+        model.addAttribute("contract", service.findRentalContractById(contractId));
+        return "/viewcontractpage";
     }
 }

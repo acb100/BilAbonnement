@@ -41,7 +41,16 @@ public class Repository {
     }
     public List<RentalContract> fetchAllRentalContractsForEmployee(int employeeId){
         String sql = "SELECT * FROM rental_contract WHERE employee_id = ?";
-        RowMapper rowMapper = new BeanPropertyRowMapper(RentalContract.class);
+        RowMapper<RentalContract> rowMapper = new BeanPropertyRowMapper<>(RentalContract.class);
         return template.query(sql, rowMapper, employeeId);
+    }
+    public Boolean deleteRentalContract(int rentalContractId){
+        String sql = "DELETE FROM rental_contract WHERE rental_contract_id = ?";
+        return template.update(sql, rentalContractId) > 0;
+    }
+    public RentalContract findRentalContractById(int rentalContractId){
+        String sql = "SELECT * FROM rental_contract WHERE rental_contract_id = ? OR start_date = ? OR costumer_id = ?";
+        RowMapper<RentalContract> rowMapper = new BeanPropertyRowMapper<>(RentalContract.class);
+        return template.queryForObject(sql, rowMapper, rentalContractId);
     }
 }

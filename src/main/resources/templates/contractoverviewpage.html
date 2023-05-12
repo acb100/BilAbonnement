@@ -30,6 +30,10 @@
             <td th:text="${contracts.customerId}" />
             <td th:text="${contracts.carId}" />
             <td th:text="${contracts.damageReportId}" />
+            <td>
+                <a th:href="@{'/deleteRentalContract' + ${contracts.rentalContractId}}"/>
+                <button>Delete contract</button>
+            </td>
         </tr>
         </tbody>
     </table>
