@@ -3,6 +3,7 @@ package com.example.bilabonnement.controller;
 import com.example.bilabonnement.model.RentalContract;
 import com.example.bilabonnement.model.Employee;
 import com.example.bilabonnement.model.Employee;
+import com.example.bilabonnement.model.RentalContract;
 import com.example.bilabonnement.service.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -11,7 +12,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.PostMapping;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -20,6 +24,9 @@ import java.util.List;
 
 @org.springframework.stereotype.Controller
 public class Controller {
+    //TODO refresh function for dashboard
+    //TODO discuss renaming header css to main
+    //TODO review damage report reference
     @Autowired
     Service service;
 
@@ -33,42 +40,31 @@ public class Controller {
         if (service.getEmployee(employeeUsername, employeePassword) != null) {
             session.setAttribute("isLoggedIn", true);
             session.setAttribute("employeeId", service.getEmployeeID(employeeUsername));
-            session.setAttribute("employeeUsername", service.getEmployee(employeeUsername).getEmployeeUsername());
+            session.setAttribute("employeeUsername", service.getEmployee(employeeUsername).getEmployee_username());
             return "redirect:/dashboard";
         } else {
             return "redirect:/";
         }
     }
 
-    @GetMapping("/register")
-    public String register() {
-        return "register";
-    }
-
     @GetMapping("/dashboard")
-    public String dashboard(Model model,HttpSession session) {
+    public String dashboard(HttpSession session) {
         Boolean isLoggedIn = (Boolean) session.getAttribute("isLoggedIn");
         if (isLoggedIn == null || !isLoggedIn) {
             return "redirect:/";
         }
-        model.addAttribute("employeeId", session.getAttribute("employeeId"));
         return "dashboard";
     }
 
-    @PostMapping("/createRentalContract")
-    public String createRentalContract(@ModelAttribute RentalContract rentalContract) {
-        service.addRentalContract(rentalContract);
-        return "redirect:/dashboard";
-    }
-
-    @GetMapping("/createContractPage")
-    public String createContractPage(HttpSession session){
+    @GetMapping("/createRentalContract")
+    public String createRentalContract(HttpSession session, Model model) {
         Boolean isLoggedIn = (Boolean) session.getAttribute("isLoggedIn");
         if (isLoggedIn == null || !isLoggedIn) {
             return "redirect:/";
-        } else {
-            return "redirect:/createrentalcontract";
         }
+        model.addAttribute("customers", service.getAllCustomers());
+        model.addAttribute("cars", service.getAllCars());
+        return "createRentalContract";
     }
     @GetMapping("/viewRentalContracts/{employeeId}")
     public String viewRentalContractsByEmployeeId(@PathVariable("employeeId") int employeeId, Model model, HttpServletRequest request){
@@ -94,6 +90,12 @@ public class Controller {
         HttpSession session = request.getSession();
         model.addAttribute("contract", service.findRentalContractById(contractId));
         return "/viewcontractpage";
+    }
+
+    @PostMapping("/createRentalContract")
+    public String createRentalContract(@ModelAttribute RentalContract rentalContract) {
+        service.addRentalContract(rentalContract);
+        return "redirect:/dashboard";
     }
 
     @GetMapping("/logout")
