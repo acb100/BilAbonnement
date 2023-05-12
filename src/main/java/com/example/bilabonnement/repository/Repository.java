@@ -7,6 +7,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
+import java.util.List;
+
 @org.springframework.stereotype.Repository
 public class Repository {
 
@@ -36,5 +38,10 @@ public class Repository {
     public Boolean getEmployee(String employeeUsername, String employeePassword) {
         String sql = "SELECT COUNT(*) FROM employee WHERE employee_username = ? AND BINARY employee_password = ?";
         return template.queryForObject(sql, Integer.class,employeeUsername, employeePassword) > 0;
+    }
+    public List<RentalContract> fetchAllRentalContractsForEmployee(int employeeId){
+        String sql = "SELECT * FROM rental_contract WHERE employee_id = ?";
+        RowMapper rowMapper = new BeanPropertyRowMapper(RentalContract.class);
+        return template.query(sql, rowMapper, employeeId);
     }
 }

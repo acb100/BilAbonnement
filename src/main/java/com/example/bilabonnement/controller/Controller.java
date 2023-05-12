@@ -6,17 +6,16 @@ import com.example.bilabonnement.model.Employee;
 import com.example.bilabonnement.service.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.*;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.PostMapping;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @org.springframework.stereotype.Controller
 public class Controller {
@@ -68,5 +67,14 @@ public class Controller {
         } else {
             return "redirect:/createrentalcontract";
         }
+    }
+    @GetMapping("/viewRentalContracts/{employeeId}")
+    public String viewRentalContractsByEmployeeId(@PathVariable("employeeId") int employeeId, Model model, HttpServletRequest request){
+        HttpSession session = request.getSession();
+        List<RentalContract> contractList = service.fetchAllRentalContractsForEmployee(employeeId);
+        String id = (String) session.getAttribute("employeeId");
+        model.addAttribute("contractlist", contractList);
+        model.addAttribute("employeeId", id);
+        return "contractoverviewpage";
     }
 }
