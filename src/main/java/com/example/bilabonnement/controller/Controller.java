@@ -23,7 +23,8 @@ public class Controller {
     public String index(@RequestParam ("username") String employeeUsername, @RequestParam ("password") String employeePassword, HttpSession session) {
         if (service.getEmployee(employeeUsername, employeePassword) != null) {
             session.setAttribute("isLoggedIn", true);
-            session.setAttribute("employeeId", service.getEmployeeByUsername(employeeUsername).getEmployeeId());
+            session.setAttribute("employeeId", service.getEmployeeID(employeeUsername));
+            session.setAttribute("employeeUsername", service.getEmployee(employeeUsername).getEmployeeUsername());
             return "redirect:/dashboard";
         } else {
             return "redirect:/";
