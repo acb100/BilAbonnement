@@ -3,8 +3,9 @@ package com.example.bilabonnement.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
-@Getter @Setter @NoArgsConstructor
+@Getter @Setter @NoArgsConstructor @ToString
 public class Car {
     private int car_id;
     private int equipment_level;
@@ -24,15 +25,5 @@ public class Car {
         this.emission = emission;
         this.model_name = model_name;
         this.brand_name = brand_name;
-    }
-
-    @Override
-    public String toString() {
-        return "{" +
-                " carId='" + getCar_id() + "'" +
-                ", equipmentLevel='" + getEquipment_level() + "'" +
-                ", vinNumber='" + getVin_nr() + "'" +
-                ", basePrice='" + getBase_price() + "'" +
-                ", vat='";
     }
 }

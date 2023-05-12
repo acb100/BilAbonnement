@@ -17,7 +17,7 @@
         <ul>
             <li><a th:href="@{dashboard}">Dashboard</a></li>
             <li><a href="#" style="background-color: #05242f">Registrer Lejekontrakt</a></li>
-            <li><a href="#">Clients</a></li>
+            <li><a href="#">Se Lejekontrakter</a></li>
             <li><a th:href="@{/logout}">Logout</a></li>
         </ul>
     </nav>
@@ -44,24 +44,26 @@
     <div>
         <form action="/createRentalContract" method="post">
             <label>Enter start date</label>
-            <input type="text" name="startDate">
+            <input type="text" name="start_date">
             <label>Enter end date</label>
-            <input type="text" name="endDate">
+            <input type="text" name="end_date">
             <label>Choose subscription type</label>
-            <select name="subscriptionType" id="subscription_choice">
+            <select name="subscription_type" id="subscription_choice">
                 <option value="Limited">Limited</option>
                 <option value="Unlimited">Unlimited</option>
             </select>
             <label>Choose Customer</label>
-            <select name="customerId" id="customer_choice">
+            <select name="customer_id" id="customer_choice">
                 <option selected value=""></option>
                 <option th:each="customer: ${customers}" th:value="${customer.getCustomer_id}"><span th:text="${customer.getCustomer_name}"></span></option>
             </select>
-            <select name="carId" id="car_choice">
+            <label>Choose Car</label>
+            <select name="car_id" id="car_choice">
                 <option selected value=""></option>
-                <option th:each="car: ${cars}" th:value="${car.carId}"><span th:text="${car.modelName}"></span></option>
+                <option th:each="car: ${cars}" th:value="${car.car_id}"><span th:text="${car.model_name}"></span></option>
             </select>
-            <input type="text" th:value="${session.employeeId}" style="display:none">
+            <input type="text" th:value="${session.employeeId}" name="employee_id" style="display:none">
+            <input type="submit" value="Create" class="create_contract_btn">
         </form>
     </div>
 

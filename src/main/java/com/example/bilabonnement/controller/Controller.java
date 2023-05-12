@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class Controller {
     //TODO refresh function for dashboard
     //TODO discuss renaming header css to main
+    //TODO review damage report reference
     @Autowired
     Service service;
 
@@ -50,7 +51,7 @@ public class Controller {
             return "redirect:/";
         }
         model.addAttribute("customers", service.getAllCustomers());
-        //model.addAttribute("cars", service.getAllCars());
+        model.addAttribute("cars", service.getAllCars());
         return "createRentalContract";
     }
 
