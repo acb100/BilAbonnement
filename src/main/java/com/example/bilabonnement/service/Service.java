@@ -17,11 +17,11 @@ public class Service {
         repo.addRentalContract(rentalContract);
     }
 
-    public Employee getEmployeeByID(int employeeId){
-        return repo.getEmployeeByID(employeeId);
+    public int getEmployeeID(String username){
+        return repo.getEmployeeByUsername(username).getEmployeeId();
     }
 
-    public Employee getEmployeeByUsername(String username){
+    public Employee getEmployee(String username){
         return repo.getEmployeeByUsername(username);
     }
 

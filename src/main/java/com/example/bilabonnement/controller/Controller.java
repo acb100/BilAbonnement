@@ -32,7 +32,8 @@ public class Controller {
     public String index(@RequestParam ("username") String employeeUsername, @RequestParam ("password") String employeePassword, HttpSession session) {
         if (service.getEmployee(employeeUsername, employeePassword) != null) {
             session.setAttribute("isLoggedIn", true);
-            session.setAttribute("employeeId", service.getEmployeeByUsername(employeeUsername).getEmployeeId());
+            session.setAttribute("employeeId", service.getEmployeeID(employeeUsername));
+            session.setAttribute("employeeUsername", service.getEmployee(employeeUsername).getEmployeeUsername());
             return "redirect:/dashboard";
         } else {
             return "redirect:/";
@@ -67,6 +68,7 @@ public class Controller {
             return "redirect:/";
         } else {
             return "redirect:/createrentalcontract";
+            return "redirect:/";
         }
     }
     @GetMapping("/viewRentalContracts/{employeeId}")
@@ -93,5 +95,11 @@ public class Controller {
         HttpSession session = request.getSession();
         model.addAttribute("contract", service.findRentalContractById(contractId));
         return "/viewcontractpage";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session){
+        session.invalidate();
+        return "redirect:/";
     }
 }
