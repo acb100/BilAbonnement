@@ -7,21 +7,21 @@ import lombok.Setter;
 
 @Getter @Setter @NoArgsConstructor
 public class Employee {
-    private int employeeId;
-    private String employeeName;
-    private String employeeUsername;
-    private String employeePassword;
-    private String employeeType;
-    private int employeeTypeId;
+    private int employee_id;
+    private String employee_name;
+    private String employee_username;
+    private String employee_password;
+    private String employee_type;
+    private int employee_type_id;
 
 
-    public Employee(int employeeId, String employeeName, String employeeUsername, String employeePassword, String employeeType, int employeeTypeId) {
-        this.employeeId = employeeId;
-        this.employeeName = employeeName;
-        this.employeeUsername = employeeUsername;
-        this.employeePassword = employeePassword;
-        this.employeeType = employeeType;
-        this.employeeTypeId = employeeTypeId;
+    public Employee(int employee_id, String employee_name, String employee_username, String employee_password, String employee_type, int employee_type_id) {
+        this.employee_id = employee_id;
+        this.employee_name = employee_name;
+        this.employee_username = employee_username;
+        this.employee_password = employee_password;
+        this.employee_type = employee_type;
+        this.employee_type_id = employee_type_id;
     }
 
 }
