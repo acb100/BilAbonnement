@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <body>
 <!--Header with sidebar and top header-->
@@ -18,17 +21,19 @@
             <li><a href="#">Dashboard</a></li>
             <li><a href="#">Registrer Lejekontrakt</a></li>
             <li><a href="#">Clients</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#">Logout</a></li>
         </ul>
     </nav>
     <div id="top_header">
-        <h1>Hello</h1>
-        <div id="search_bar">
-
+        <div class="search-container">
+            <form action="/search">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
         </div>
-        <div id="top_header_right">
+        <div id="user_profile">
             <p>Username</p>
-            <img src="img/Profile.jpg" alt="Profile" id="profile_pic">
+            <img src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png" alt="Profile pic" id="profile_pic">
         </div>
     </div>
 </header>

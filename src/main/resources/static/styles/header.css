@@ -17,9 +17,10 @@ body {
 /* Top header css with margin to push it away from sidebar */
 #top_header {
     width: 100%;
+    height: 90px;
     left: 160px;
     top: 0;
-    padding: 20px 10px;
+    padding: 20px 10px 25px 500px;
     background-color: var(--onyx);
     position: fixed;
     display: flex;
@@ -27,9 +28,43 @@ body {
     align-items: center;
 }
 
-/* Top header right design */
-#top_header_right {
+/* Search bar positioning */
+#top_header .search-container {
+    padding-left: 150px;
+    padding-bottom: 5px;
+}
 
+/* Search bar form design */
+#top_header input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+}
+
+/* Search bar button design */
+#top_header .search-container button {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Search bar button hover effect */
+#top_header .search-container button:hover {
+    background: #ccc;
+}
+
+/* Top header right design. Use right to change position of div */
+#user_profile{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: -400px;
 }
 
 /* sidebar navigation menu */
@@ -75,8 +110,9 @@ body {
     width: 10%;
 }
 
+/* Header profile pic size control */
 #profile_pic{
-width: 5%;
+    width: 10%;
 }
 
 /* padding for aligning main content with headers */
@@ -87,12 +123,27 @@ main {
     background-color: var(--white_smoke);
 }
 
-@media screen and (max-height: 450px) {
+@media screen and (max-height: 450px) and  (max-width: 600px) {
     #sidenav {
         padding-top: 15px;
     }
 
     #sidenav a {
         font-size: 18px;
+    }
+
+    #top_header .search-container {
+        float: none;
+    }
+    #top_header a, #top_header input[type=text], #top_header .search-container button {
+        float: none;
+        display: block;
+        text-align: left;
+        width: 100%;
+        margin: 0;
+        padding: 14px;
+    }
+    #top_header input[type=text] {
+        border: 1px solid #ccc;
     }
 }
