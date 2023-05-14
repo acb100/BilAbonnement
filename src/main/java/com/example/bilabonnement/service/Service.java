@@ -20,11 +20,11 @@ public class Service {
     }
 
     public int getEmployeeID(String username){
-        return repo.getEmployeeByUsername(username).getEmployee_id();
+        return repo.getEmployee(username).getEmployee_id();
     }
 
-    public Employee employeeExists(String username){
-        return repo.getEmployeeByUsername(username);
+    public Employee getEmployee(String username){
+        return repo.getEmployee(username);
     }
 
     public Boolean employeeExists(String employeeUsername, String employeePassword) {

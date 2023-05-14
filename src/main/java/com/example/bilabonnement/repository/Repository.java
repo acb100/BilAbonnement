@@ -35,7 +35,7 @@ public class Repository {
         return template.queryForObject(sql2, Integer.class);
     }
 
-    public Employee getEmployeeByUsername(String username) {
+    public Employee getEmployee(String username) {
         String sql = "SELECT * FROM employee WHERE employee_username = ?";
         RowMapper<Employee> rowMapper = new BeanPropertyRowMapper<>(Employee.class);
         return template.queryForObject(sql, rowMapper, username);
