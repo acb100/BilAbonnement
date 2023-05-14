@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rental Contracts</title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.png">
+    <link rel="stylesheet" type="text/css" href="/styles/header.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<header>
+    <nav id="sidenav">
+        <img src="img/small_logo_transparent.png" alt="Logo" id="small_logo">
+        <ul>
+            <li><a th:href="@{dashboard}">Dashboard</a></li>
+            <li><a th:href="@{createRentalContract}">Registrer Lejekontrakt</a></li>
+            <li><a th:href="@{viewRentalContracts}" style="background-color: #05242f">Se Lejekontrakter</a></li>
+            <li><a th:href="@{/logout}">Logout</a></li>
+        </ul>
+    </nav>
+    <div id="top_header">
+        <div class="search-container">
+            <form action="/search">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+        <div id="user_profile">
+            <p style="color: whitesmoke"><span th:text="${session.employeeUsername}"></span></p>
+            <div class="dropdown">
+                <img src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png" alt="Profile pic"
+                     id="profile_pic">
+                <div class="dropdown-content">
+                    <a th:href="@{myprofile}">Profile</a>
+                    <a th:href="@{logout}">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<main>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Start date</th>
+            <th>End date</th>
+            <th>Active</th>
+            <th>Employee ID</th>
+            <th>Subscription ID</th>
+            <th>Customer ID</th>
+            <th>Car ID</th>
+            <th>Damage report</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="contract: ${contractList}">
+            <td th:text="${contract.rental_contract_id}"></td>
+            <td th:text="${contract.start_date}"></td>
+            <td th:text="${contract.end_date}"></td>
+            <td th:text="${contract.ongoing}"></td>
+            <td th:text="${contract.employee_id}"></td>
+            <td th:text="${contract.subscription_type}"></td>
+            <td th:text="${contract.customer_id}"></td>
+            <td th:text="${contract.car_id}"></td>
+            <td th:text="${contract.damage_report_id}"></td>
+            <td>
+                <a th:href="@{'/deleteRentalContract/' + ${contract.rental_contract_id}}">
+                    <button>Delete contract</button>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+<footer>
+
+</footer>
+
+</body>
+</html>

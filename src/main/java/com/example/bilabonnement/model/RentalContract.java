@@ -4,13 +4,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Getter @Setter @NoArgsConstructor
 public class RentalContract {
     private int rental_contract_id;
-    private Date start_date;
-    private Date end_date;
+    private LocalDate start_date;
+    private LocalDate end_date;
     private String subscription_type;
     private int employee_id;
     private int customer_id;
@@ -18,7 +18,7 @@ public class RentalContract {
     private int damage_report_id;
     private boolean ongoing;
 
-    public RentalContract(int rental_contract_id, Date start_date, Date end_date, String subscriptionId, int employee_id,
+    public RentalContract(int rental_contract_id, LocalDate start_date, LocalDate end_date, String subscriptionId, int employee_id,
                           int customer_id, int car_id, int damage_report_id, int discountId, String subscription_type, boolean ongoing) {
         this.rental_contract_id = rental_contract_id;
         this.start_date = start_date;

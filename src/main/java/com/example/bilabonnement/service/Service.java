@@ -10,9 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @org.springframework.stereotype.Service
 public class Service {
 
@@ -26,12 +23,12 @@ public class Service {
         return repo.getEmployeeByUsername(username).getEmployee_id();
     }
 
-    public Employee getEmployee(String username){
+    public Employee employeeExists(String username){
         return repo.getEmployeeByUsername(username);
     }
 
-    public Boolean getEmployee(String employeeUsername, String employeePassword) {
-        return repo.getEmployee(employeeUsername, employeePassword);
+    public Boolean employeeExists(String employeeUsername, String employeePassword) {
+        return repo.employeeExists(employeeUsername, employeePassword);
     }
 
     public List<Customer> getAllCustomers(){
@@ -41,6 +38,11 @@ public class Service {
     public List<Car> getAllCars(){
         return repo.getAllCars();
     }
+
+    public List<RentalContract> getAllRentalContracts(){
+        return repo.getAllRentalContracts();
+    }
+
     public List<RentalContract> fetchAllRentalContractsForEmployee(int employeeId){
         return repo.fetchAllRentalContractsForEmployee(employeeId);
     }

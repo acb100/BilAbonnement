@@ -16,8 +16,8 @@
         <img src="img/small_logo_transparent.png" alt="Logo" id="small_logo">
         <ul>
             <li><a th:href="@{dashboard}">Dashboard</a></li>
-            <li><a href="#" style="background-color: #05242f">Registrer Lejekontrakt</a></li>
-            <li><a href="#">Se Lejekontrakter</a></li>
+            <li><a th:href="@{createRentalContract}" style="background-color: #05242f">Registrer Lejekontrakt</a></li>
+            <li><a th:href="@{viewRentalContracts}">Se Lejekontrakter</a></li>
             <li><a th:href="@{/logout}">Logout</a></li>
         </ul>
     </nav>
