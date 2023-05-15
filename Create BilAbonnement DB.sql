@@ -66,7 +66,7 @@ CREATE TABLE customer
   (
   damage_report_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
   damage_report_content VARCHAR(1000) NULL,
-  employee_id INT NOT NULL,
+  employee_id INT DEFAULT NULL,
   FOREIGN KEY (employee_id) REFERENCES employee(employee_id)
   );
   
@@ -88,3 +88,29 @@ CREATE TABLE customer
   FOREIGN KEY (car_id) REFERENCES car(car_id),
   FOREIGN KEY (damage_report_id) REFERENCES damage_report(damage_report_id)
   );
+  
+  INSERT INTO subscription(subscription_type) VALUES
+  ("Limited"),
+  ("Unlimited");
+  
+  INSERT INTO employee_type(employee_type) VALUES 
+  ("Dataregistrering"),
+  ("Skade og Udbedring"),
+  ("Forretningsudvikler"),
+  ("Økonomi");
+  
+  INSERT INTO brand(brand_name) VALUES
+("Toyota");
+
+INSERT INTO model(model_name, brand_id) VALUES
+("Prius", 1);
+
+INSERT INTO car(vin_nr, equipment_level, base_price, vat, emission, model_id) VALUES
+("239DB132", 3, 10000, 2500.00, 2.9, 1);
+
+INSERT INTO employee(employee_name, employee_username, employee_password, employee_type_id) VALUES
+("Bob", "Bob123", "password", 1);
+
+INSERT INTO customer(customer_name, email, phone_number, address, driver_license_number, cpr_number) VALUES
+("Karen", "karen@gmail.com", "+45 34042123", "København 10", 998080, 2003938974);
+  
