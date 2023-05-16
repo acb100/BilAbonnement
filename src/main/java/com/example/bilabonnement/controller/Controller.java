@@ -1,5 +1,6 @@
 package com.example.bilabonnement.controller;
 
+import com.example.bilabonnement.model.DamageReport;
 import com.example.bilabonnement.model.RentalContract;
 import com.example.bilabonnement.service.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.util.List;
 
@@ -42,23 +45,15 @@ public class Controller {
     }
 
     @GetMapping("/dashboard")
-    public String dashboard(HttpSession session) {
-        Boolean isLoggedIn = (Boolean) session.getAttribute("isLoggedIn");
-        if (isLoggedIn == null || !isLoggedIn) {
-            return "redirect:/";
-        }
-        return "dashboard";
+    public String dashboard() {
+        return loginCheck("dashboard");
     }
 
     @GetMapping("/createRentalContract")
-    public String createRentalContract(HttpSession session, Model model) {
-        Boolean isLoggedIn = (Boolean) session.getAttribute("isLoggedIn");
-        if (isLoggedIn == null || !isLoggedIn) {
-            return "redirect:/";
-        }
+    public String createRentalContract(Model model) {
         model.addAttribute("customers", service.getAllCustomers());
         model.addAttribute("cars", service.getAllCars());
-        return "createRentalContract";
+        return loginCheck("createRentalContract");
     }
 
     @PostMapping("/createRentalContract")
@@ -68,13 +63,10 @@ public class Controller {
     }
 
     @GetMapping("/viewRentalContracts")
-    public String viewRentalContracts(HttpSession session, Model model) {
-        Boolean isLoggedIn = (Boolean) session.getAttribute("isLoggedIn");
-        if (isLoggedIn == null || !isLoggedIn) {
-            return "redirect:/";
-        }
+    public String viewRentalContracts(Model model) {
         model.addAttribute("contractList", service.getAllRentalContracts());
-        return "contractOverview";
+        return loginCheck("contractOverview");
+
     }
 
     @GetMapping("/viewRentalContracts/{employeeId}")
@@ -94,7 +86,7 @@ public class Controller {
             return "redirect:/viewRentalContracts";
         } else {
             return "redirect:/viewRentalContracts";
-    }
+        }
     }
 
     //TODO bliver ikke brugt lige nu, men kan bruges til at finde en enkelt contract gennem ID
@@ -103,6 +95,37 @@ public class Controller {
         HttpSession session = request.getSession();
         model.addAttribute("contract", service.findRentalContractById(contractId));
         return "/viewcontractpage";
+    }
+
+    @GetMapping("/createDamageReport")
+    public String createDamageReport(Model model) {
+        model.addAttribute("contractList", service.getAllRentalContracts());
+        return loginCheck("createDamageReport");
+    }
+
+    @PostMapping("/createDamageReport")
+    public String createDamageReport(@ModelAttribute DamageReport damageReport,
+                                     @RequestParam(name = "rental_contract_id") int rentalContractId){
+        service.updateDamageReport(damageReport, rentalContractId);
+        return loginCheck("dashboard");
+    }
+
+    /**
+     * Method for checking if user is logged in. used in the return statement instead of just inputting String;
+     *
+     * @param mapping is the string that points to the html document
+     */
+    private String loginCheck(String mapping) {
+        try {
+            HttpSession session = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest().getSession(false);
+            Boolean isLoggedIn = (Boolean) session.getAttribute("isLoggedIn");
+            if (isLoggedIn == null || !isLoggedIn) {
+                return "redirect:/";
+            }
+            return mapping;
+        } catch (NullPointerException e) {
+            return "redirect:/";
+        }
     }
 
     @GetMapping("/logout")

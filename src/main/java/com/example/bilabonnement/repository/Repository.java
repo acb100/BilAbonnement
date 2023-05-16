@@ -1,9 +1,6 @@
 package com.example.bilabonnement.repository;
 
-import com.example.bilabonnement.model.Car;
-import com.example.bilabonnement.model.Customer;
-import com.example.bilabonnement.model.Employee;
-import com.example.bilabonnement.model.RentalContract;
+import com.example.bilabonnement.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -33,6 +30,14 @@ public class Repository {
         template.update(sql, "No content");
         String sql2 = "SELECT damage_report_id FROM damage_report ORDER BY damage_report_id DESC LIMIT 1";
         return template.queryForObject(sql2, Integer.class);
+    }
+
+    public void updateDamageReport(DamageReport damageReport, int rentalContractId){
+        String sql = "UPDATE damage_report " +
+                "SET damage_report_comment = ?, damage_report_overdriven_km = ?, employee_id = ? " +
+                "WHERE damage_report_id = (SELECT damage_report_id FROM rental_contract WHERE rental_contract_id = ?)";
+        template.update(sql, damageReport.getDamage_report_comment(),
+                damageReport.getDamage_report_overdriven_km(), damageReport.getEmployee_id(), rentalContractId);
     }
 
     public Employee getEmployee(String username) {

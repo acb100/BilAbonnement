@@ -1,10 +1,7 @@
 package com.example.bilabonnement.service;
 
 
-import com.example.bilabonnement.model.Car;
-import com.example.bilabonnement.model.Customer;
-import com.example.bilabonnement.model.Employee;
-import com.example.bilabonnement.model.RentalContract;
+import com.example.bilabonnement.model.*;
 import com.example.bilabonnement.repository.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -51,5 +48,9 @@ public class Service {
     }
     public RentalContract findRentalContractById(int rentalContractId){
         return repo.findRentalContractById(rentalContractId);
+    }
+
+    public void updateDamageReport(DamageReport damageReport, int rentalContractId) {
+        repo.updateDamageReport(damageReport, rentalContractId);
     }
 }

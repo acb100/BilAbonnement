@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Rental Contract</title>
+  <link rel="icon" type="image/x-icon" href="/img/favicon.png">
+  <link rel="stylesheet" type="text/css" href="/styles/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<header>
+  <nav id="sidenav">
+    <img src="img/small_logo_transparent.png" alt="Logo" id="small_logo">
+    <ul>
+      <li><a th:href="@{dashboard}">Dashboard</a></li>
+      <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{createRentalContract}">Registrer Lejekontrakt</a></li>
+      <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{viewRentalContracts}">Se Lejekontrakter</a></li>
+      <li th:if="${session.employeeTypeId} =='2'"><a th:href="@{createDamageReport}" style="background-color: #05242f">Lav Skadesrapport</a></li>
+      <li th:if="${session.employeeTypeId} =='2'"><a th:href="@{viewRentalContracts}">Se Skadesrapporter</a></li>
+      <li th:if="${session.employeeTypeId} =='3'"><a th:href="@{viewRentalContracts}">Overblik biler</a></li>
+      <li th:if="${session.employeeTypeId} =='3'"><a th:href="@{viewRentalContracts}">Registrer biler</a></li>
+      <li><a th:href="@{/logout}">Logout</a></li>
+    </ul>
+  </nav>
+  <div id="top_header">
+    <div class="search-container">
+      <form action="/search">
+        <input type="text" placeholder="Search.." name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+    <div id="user_profile">
+      <p style="color: whitesmoke"><span th:text="${session.employeeUsername}"></span></p>
+      <div class="dropdown">
+        <img src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png" alt="Profile pic" id="profile_pic">
+        <div class="dropdown-content">
+          <a th:href="@{myprofile}">Profile</a>
+          <a th:href="@{logout}">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<main>
+  <div>
+    <form action="/createDamageReport" method="post">
+      <label>Choose Rental Contract</label>
+      <select name="rental_contract_id" id="rental_contract_id">
+        <option selected value=""></option>
+        <option th:each="contract: ${contractList}" th:value="${contract.rental_contract_id}" name="rental_contract_id">
+          <span th:text="${contract.rental_contract_id}"></span></option>
+      </select>
+      <label>Comments</label>
+      <input type="text" name="damage_report_comment">
+      <label>Overdriven KM</label>
+      <input type="number" name="damage_report_overdriven_km" value="0">
+      <input type="text" th:value="${session.employeeId}" name="employee_id" style="display:none">
+      <input type="submit" value="Create" class="create_contract_btn">
+    </form>
+  </div>
+
+</main>
+<footer>
+</footer>
+</body>
+</html>
