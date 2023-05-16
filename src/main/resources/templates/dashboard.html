@@ -19,8 +19,12 @@
         <img src="img/small_logo_transparent.png" alt="Logo" id="small_logo">
         <ul>
             <li><a th:href="@{dashboard}" style="background-color: #05242f">Dashboard</a></li>
-            <li><a th:href="@{createRentalContract}">Registrer Lejekontrakt</a></li>
-            <li><a th:href="@{viewRentalContracts}">Se Lejekontrakter</a></li>
+            <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{createRentalContract}">Registrer Lejekontrakt</a></li>
+            <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{viewRentalContracts}">Se Lejekontrakter</a></li>
+            <li th:if="${session.employeeTypeId} =='2'"><a th:href="@{viewRentalContracts}">Lav Skadesrapport</a></li>
+            <li th:if="${session.employeeTypeId} =='2'"><a th:href="@{viewRentalContracts}">Se Skadesrapporter</a></li>
+            <li th:if="${session.employeeTypeId} =='3'"><a th:href="@{viewRentalContracts}">Overblik biler</a></li>
+            <li th:if="${session.employeeTypeId} =='3'"><a th:href="@{viewRentalContracts}">Registrer biler</a></li>
             <li><a th:href="@{/logout}">Logout</a></li>
         </ul>
     </nav>

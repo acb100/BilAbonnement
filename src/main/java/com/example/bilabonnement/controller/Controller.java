@@ -19,6 +19,7 @@ public class Controller {
     //TODO refresh function for dashboard
     //TODO discuss renaming header css to main
     //TODO review damage report reference
+    //TODO ADM user
     @Autowired
     Service service;
 
@@ -32,7 +33,8 @@ public class Controller {
         if (service.employeeExists(employeeUsername, employeePassword) != null) {
             session.setAttribute("isLoggedIn", true);
             session.setAttribute("employeeId", service.getEmployeeID(employeeUsername));
-            session.setAttribute("employeeUsername", service.employeeExists(employeeUsername).getEmployee_username());
+            session.setAttribute("employeeUsername", service.getEmployee(employeeUsername).getEmployee_username());
+            session.setAttribute("employeeTypeId", service.getEmployee(employeeUsername).getEmployee_type_id());
             return "redirect:/dashboard";
         } else {
             return "redirect:/";
