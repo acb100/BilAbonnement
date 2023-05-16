@@ -70,7 +70,7 @@ body {
 /* sidebar navigation menu */
 #sidenav {
     height: 100%;
-    width: 160px;
+    width: 180px;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -78,6 +78,11 @@ body {
     background-color: var(--indigo_dye);
     overflow-x: hidden;
     padding-top: 20px;
+}
+
+/* Sidebar nav horizontal spacing */
+#sidenav li{
+    padding-top: 5px;
 }
 
 /* sidebar links */
@@ -118,7 +123,7 @@ body {
 /* padding for aligning main content with headers */
 main {
     padding: 0px 10px;
-    margin-left: 160px;
+    margin-left: 180px;
     margin-top: 100px;
     background-color: var(--white_smoke);
 }
