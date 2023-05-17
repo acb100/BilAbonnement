@@ -36,6 +36,18 @@ public class Service {
         return repo.getAllCars();
     }
 
+    public List<Car> getAllUsedCars() { return repo.getAllUsedCars(); }
+
+    public List<Car> getAllUnusedCars() { return repo.getAllUnusedCars(); }
+
+    public int getAllUnusedCarRows(){
+        return repo.countAllUnusedCarRows();
+    }
+
+    public int getAllUsedCarRows(){
+        return repo.countAllUsedCarRows();
+    }
+
     public List<RentalContract> getAllRentalContracts(){
         return repo.getAllRentalContracts();
     }

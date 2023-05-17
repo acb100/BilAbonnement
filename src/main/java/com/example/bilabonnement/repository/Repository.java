@@ -64,6 +64,30 @@ public class Repository {
         return template.query(sql, rowMapper);
     }
 
+    public List<Car> getAllUsedCars() {
+        String sql = "SELECT car_id, vin_nr, equipment_level, base_price, vat, emission, model_name, brand_name  " +
+                "FROM car JOIN model USING (model_id) JOIN brand USING (brand_id) JOIN rental_contract USING (car_id)";
+        RowMapper<Car> rowMapper = new BeanPropertyRowMapper<>(Car.class);
+        return template.query(sql, rowMapper);
+    }
+
+    public List<Car> getAllUnusedCars() {
+        String sql = "SELECT car_id, vin_nr, equipment_level, base_price, vat, emission, model_name, brand_name  " +
+                "FROM car JOIN model USING (model_id) JOIN brand USING (brand_id) LEFT JOIN rental_contract USING (car_id) WHERE rental_contract_id IS NULL";
+        RowMapper<Car> rowMapper = new BeanPropertyRowMapper<>(Car.class);
+        return template.query(sql, rowMapper);
+    }
+
+    public int countAllUnusedCarRows () {
+        String sql = "SELECT COUNT(*) AS row_count FROM car JOIN model USING (model_id) JOIN brand USING (brand_id) LEFT JOIN rental_contract USING (car_id) WHERE rental_contract_id IS NULL;";
+        return template.queryForObject(sql, Integer.class);
+    }
+
+    public int countAllUsedCarRows () {
+        String sql = "SELECT COUNT(*) AS row_count FROM car JOIN model USING (model_id) JOIN brand USING (brand_id) LEFT JOIN rental_contract USING (car_id) WHERE rental_contract_id;";
+        return template.queryForObject(sql, Integer.class);
+    }
+
     public List<RentalContract> getAllRentalContracts() {
         String sql = "SELECT rental_contract_id, start_date, end_date, subscription_type, employee_id, " +
                 "customer_id, car_id, damage_report_id, ongoing " +

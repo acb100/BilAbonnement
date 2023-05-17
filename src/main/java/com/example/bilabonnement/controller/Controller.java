@@ -50,7 +50,14 @@ public class Controller {
     }
 
     @GetMapping("/dashboard")
-    public String dashboard() {
+    public String dashboard(Model model) {
+        model.addAttribute("usedCars", service.getAllUsedCars());
+        model.addAttribute("unusedCars", service.getAllUnusedCars());
+        model.addAttribute("usedCarRows", service.getAllUsedCarRows());
+        model.addAttribute("unusedCarRows", service.getAllUnusedCarRows());
+        if (service.getAllUnusedCarRows() <= 25) {
+            model.addAttribute("warning", "Der er mindre end 15 ledige biler tilbage");
+        }
         return loginCheck("dashboard");
     }
 

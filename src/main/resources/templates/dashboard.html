@@ -48,25 +48,62 @@
     </div>
 </header>
 <main>
-    <h2>Sidebar</h2>
-    <p>This sidebar is of full height (100%) and always shown.</p>
-    <p>Scroll down the page to see the result.</p>
-    <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque
-        et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus
-        repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-    <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque
-        et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus
-        repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-    <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque
-        et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus
-        repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-    <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque
-        et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus
-        repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-    <p>jknnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn</p>
-    <p>jknnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn</p>
+    <table>
+        <thead>
+        <tr>
+            <th>Car ID</th>
+            <th>VIN Number</th>
+            <th>Equipment Level</th>
+            <th>Base Price</th>
+            <th>VAT</th>
+            <th>Emission</th>
+            <th>Model Name</th>
+            <th>Brand Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Display used cars -->
+        <h2>Used Cars:</h2>
+        <tr th:each="usedCar : ${usedCars}">
+            <td th:text="${usedCar.car_id}"></td>
+            <td th:text="${usedCar.vin_nr}"></td>
+            <td th:text="${usedCar.equipment_level}"></td>
+            <td th:text="${usedCar.base_price}"></td>
+            <td th:text="${usedCar.vat}"></td>
+            <td th:text="${usedCar.emission}"></td>
+            <td th:text="${usedCar.model_name}"></td>
+            <td th:text="${usedCar.brand_name}"></td>
+        </tr>
 
-    <p>jknnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn</p>
+        <!-- Display unused cars -->
+        <h3>Unused Cars:</h3>
+        <tr>
+            <th>Car ID</th>
+            <th>VIN Number</th>
+            <th>Equipment Level</th>
+            <th>Base Price</th>
+            <th>VAT</th>
+            <th>Emission</th>
+            <th>Model Name</th>
+            <th>Brand Name</th>
+        </tr>
+        <tr th:each="unusedCars : ${unusedCars}">
+            <td th:text="${unusedCars.car_id}"></td>
+            <td th:text="${unusedCars.vin_nr}"></td>
+            <td th:text="${unusedCars.equipment_level}"></td>
+            <td th:text="${unusedCars.base_price}"></td>
+            <td th:text="${unusedCars.vat}"></td>
+            <td th:text="${unusedCars.emission}"></td>
+            <td th:text="${unusedCars.model_name}"></td>
+            <td th:text="${unusedCars.brand_name}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Check if there are less than 15 unused cars -->
+    <div th:="${warning}">
+    </div>
+
 </main>
 <footer>
 
