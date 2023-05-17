@@ -56,9 +56,6 @@ public class Controller {
         model.addAttribute("unusedCars", service.getAllUnusedCars());
         model.addAttribute("usedCarRows", service.getAllUsedCarRows());
         model.addAttribute("unusedCarRows", service.getAllUnusedCarRows());
-        if (service.getAllUnusedCarRows() <= 25) {
-            model.addAttribute("warning", "Der er mindre end 15 ledige biler tilbage");
-        }
         return loginCheck("dashboard");
     }
 
