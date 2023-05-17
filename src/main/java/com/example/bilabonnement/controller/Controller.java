@@ -31,6 +31,11 @@ public class Controller {
         return "index";
     }
 
+    @GetMapping("/myProfile")
+    public String myProfile(){
+        return "myProfile";
+    }
+
     @PostMapping("/")
     public String index(@RequestParam("username") String employeeUsername, @RequestParam("password") String employeePassword, HttpSession session) {
         if (service.employeeExists(employeeUsername, employeePassword) != null) {
@@ -94,7 +99,7 @@ public class Controller {
     public String viewRentalContract(@PathVariable("contractId") int contractId, HttpServletRequest request, Model model) {
         HttpSession session = request.getSession();
         model.addAttribute("contract", service.findRentalContractById(contractId));
-        return "/viewcontractpage";
+        return "viewContractPage";
     }
 
     @GetMapping("/createDamageReport")
