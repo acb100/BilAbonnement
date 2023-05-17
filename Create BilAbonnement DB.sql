@@ -126,8 +126,9 @@ INSERT INTO car(vin_nr, equipment_level, base_price, vat, emission, model_id) VA
 
 INSERT INTO employee(employee_name, employee_username, employee_password, employee_type_id) VALUES
 ("Bob", "Bob123", "password", 1),
-("DataRegistrering", "data", "datakode", 1),
-("Skade og Udbedring", "skade", "skadekode", 2);
+("DataRegistrering", "data", "data", 1),
+("Skade og Udbedring", "skade", "skade", 2),
+("Forretningsudvikler", "forretning", "forretning", 3);
 
 INSERT INTO customer(customer_name, email, phone_number, address, driver_license_number, cpr_number) VALUES
 ("Karen", "karen@gmail.com", "+45 34042123", "København 10", 998080, 2003938974);
