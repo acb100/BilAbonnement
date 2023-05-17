@@ -4,7 +4,6 @@ body {
 
 /* login background */
 body.login-background {
-    font-family: "Montserrat", sans-serif;
     background: #0b445b;
 }
 
