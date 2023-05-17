@@ -60,6 +60,7 @@
         </tr>
         </thead>
         <tr th:each="cars: ${carList}">
+            <td><img th:src="${cars.model_image_url}"></td>
             <td th:text="${cars.car_id}"></td>
             <td th:text="${cars.vin_nr}"></td>
             <td th:text="${cars.brand_name}"></td>

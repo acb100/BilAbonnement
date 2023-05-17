@@ -92,11 +92,12 @@ public class Repository {
     }
     public List<Car> fetchAllCars(){
         String sql = "SELECT ongoing, car_id, vin_nr, equipment_level, base_price, vat, emission," +
-                " model_name, brand_name " +
+                " model_name, brand_name, model_image_url " +
                 "FROM car " +
                 "LEFT JOIN rental_contract USING(car_id) " +
                 "JOIN model USING(model_id) " +
-                "JOIN brand USING(brand_id)";
+                "JOIN brand USING(brand_id) " +
+                "LEFT JOIN model_image USING(model_image_id)";
         RowMapper<Car> rowMapper = new BeanPropertyRowMapper<>(Car.class);
         return template.query(sql, rowMapper);
     }

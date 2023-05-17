@@ -17,8 +17,9 @@ public class Car {
     private String brand_name;
 
     private Boolean ongoing;
+    private String model_image_url;
 
-    public Car(int car_id, int equipment_level, String vin_nr, double base_price, double vat, double emission, int modelId, String model_name, String modelBrand, int brandId, String brand_name, boolean ongoing) {
+    public Car(int car_id, int equipment_level, String vin_nr, double base_price, double vat, double emission, int modelId, String model_name, String modelBrand, int brandId, String brand_name, boolean ongoing, String model_image_url) {
         this.car_id = car_id;
         this.equipment_level = equipment_level;
         this.vin_nr = vin_nr;
@@ -28,5 +29,6 @@ public class Car {
         this.model_name = model_name;
         this.brand_name = brand_name;
         this.ongoing = ongoing;
+        this.model_image_url = model_image_url;
     }
 }
