@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>My Profile</title>
     <link rel="icon" type="image/x-icon" href="/img/favicon.png">
-    <link rel="stylesheet" type="text/css" href="/styles/header.css">
+    <link rel="stylesheet" type="text/css" href="/styles/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
@@ -41,7 +41,13 @@
     </div>
 </header>
 <div class="body-container">
+    <h1>Min profil</h1>
 
+    <p>Fornavn: <span th:text="${employee_name}"></span></p>
+    <p>Efternavn: <span th:text="${employee_type}"></span></p>
+    <hr>
+    <p>Brugernavn: <span th:text="${employee_username}"></span></p>
+    <p>Adgangskode: <span th:text="${employee_password}" style="-webkit-text-security: disc"></span></p>
 </div>
 </body>
 </html>
