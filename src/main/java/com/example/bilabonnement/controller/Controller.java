@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import java.util.Arrays;
 import java.util.List;
 
 @org.springframework.stereotype.Controller
@@ -107,6 +108,7 @@ public class Controller {
     @PostMapping("/createDamageReport")
     public String createDamageReport(@ModelAttribute DamageReport damageReport,
                                      @RequestParam(name = "rental_contract_id") int rentalContractId){
+        System.out.println(Arrays.toString(damageReport.getDamage_type_ids()));
         service.updateDamageReport(damageReport, rentalContractId);
         return loginCheck("dashboard");
     }
