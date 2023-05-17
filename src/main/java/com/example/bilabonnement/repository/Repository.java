@@ -26,10 +26,18 @@ public class Repository {
     }
 
     public int addDamageReport() {
-        String sql = "INSERT INTO damage_report(damage_report_content) VALUES(?)";
+        String sql = "INSERT INTO damage_report(damage_report_comment) VALUES(?)";
         template.update(sql, "No content");
         String sql2 = "SELECT damage_report_id FROM damage_report ORDER BY damage_report_id DESC LIMIT 1";
         return template.queryForObject(sql2, Integer.class);
+    }
+
+    public void addDamageOnReport(DamageReport damageReport, int rentalContractId){
+        String sql = "INSERT INTO damage_on_report(damage_report_id, damage_type_id) VALUES(" +
+                "(SELECT damage_report_id FROM rental_contract WHERE rental_contract_id = ?), ?)";
+        for (int i = 0; i < damageReport.getDamage_type_ids().length; i++) {
+            template.update(sql,rentalContractId, damageReport.getDamage_type_ids()[i]);
+        }
     }
 
     public void updateDamageReport(DamageReport damageReport, int rentalContractId){
@@ -38,6 +46,12 @@ public class Repository {
                 "WHERE damage_report_id = (SELECT damage_report_id FROM rental_contract WHERE rental_contract_id = ?)";
         template.update(sql, damageReport.getDamage_report_comment(),
                 damageReport.getDamage_report_overdriven_km(), damageReport.getEmployee_id(), rentalContractId);
+    }
+
+    public List<DamageType> getAllDamageTypes() {
+        String sql = "SELECT * FROM damage_type";
+        RowMapper<DamageType> rowMapper = new BeanPropertyRowMapper<>(DamageType.class);
+        return template.query(sql, rowMapper);
     }
 
     public Employee getEmployee(String username) {

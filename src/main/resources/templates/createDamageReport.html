@@ -45,7 +45,7 @@
   </div>
 </header>
 <main>
-  <div>
+  <div class="form-container">
     <form action="/createDamageReport" method="post">
       <label>Choose Rental Contract</label>
       <select name="rental_contract_id" id="rental_contract_id">
@@ -56,7 +56,12 @@
       <label>Comments</label>
       <input type="text" name="damage_report_comment">
       <label>Overdriven KM</label>
-      <input type="number" name="damage_report_overdriven_km" value="0">
+      <input type="number" name="damage_report_overdriven_km" value="0"><br>
+      <label>Damages</label>
+      <div th:each="damageType: ${damageTypeList}">
+      <input type="checkbox" th:value="${damageType.damage_type_id}" name="damage_type_ids">
+      <label><span th:text="${damageType.damage_type_name}"></span></label><br>
+      </div>
       <input type="text" th:value="${session.employeeId}" name="employee_id" style="display:none">
       <input type="submit" value="Create" class="create_contract_btn">
     </form>

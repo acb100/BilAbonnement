@@ -16,6 +16,10 @@ public class Service {
         repo.addRentalContract(rentalContract, repo.addDamageReport());
     }
 
+    public List<DamageType> getAllDamageTypes(){
+        return repo.getAllDamageTypes();
+    }
+
     public int getEmployeeID(String username){
         return repo.getEmployee(username).getEmployee_id();
     }
@@ -64,6 +68,7 @@ public class Service {
 
     public void updateDamageReport(DamageReport damageReport, int rentalContractId) {
         repo.updateDamageReport(damageReport, rentalContractId);
+        repo.addDamageOnReport(damageReport, rentalContractId);
     }
     public List<Car> fetchAllCars(){
         return repo.fetchAllCars();
