@@ -31,10 +31,17 @@ CREATE TABLE employee
   brand_name VARCHAR(45) NULL
   );
   
+  CREATE TABLE model_image
+  (
+  model_image_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
+  model_image_url VARCHAR(256) NULL
+  );
+  
   CREATE TABLE model
   (
   model_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
   model_name VARCHAR(45) NULL,
+  model_image_id INT NULL,
   brand_id INT NOT NULL,
   FOREIGN KEY (brand_id) REFERENCES brand(brand_id)
   );
@@ -116,13 +123,71 @@ CREATE TABLE customer
   ("Økonomi");
   
   INSERT INTO brand(brand_name) VALUES
-("Toyota");
+("Toyota"),
+("Honda"),
+("Ford"),
+("Chevrolet"),
+("BMW"),
+("Mercedes-Benz"),
+("Audi"),
+("Volkswagen"),
+("Nissan"),
+("Hyundai"),
+("Kia"),
+("Volvo"),
+("Mazda"),
+("Subaru"),
+("Lexus"),
+("Porsche"),
+("Land Rover"),
+("Jeep"),
+("Ferrari"),
+("Tesla"),
+("Maserati");
 
 INSERT INTO model(model_name, brand_id) VALUES
-("Prius", 1);
+("Prius", 1),
+("Civic", 2),
+("Focus", 3),
+("Cruze", 4),
+("3 Series", 5),
+("C-Class", 6),
+("A4", 7),
+("Golf", 8),
+("Altima", 9),
+("Elantra", 10),
+("Optima", 11),
+("S60", 12),
+("MX-5", 13),
+("Impreza", 14),
+("IS", 15),
+("911", 16),
+("Range Rover", 17),
+("Wrangler", 18),
+("488 GTB", 19),
+("Model S", 20);
 
 INSERT INTO car(vin_nr, equipment_level, base_price, vat, emission, model_id) VALUES
-("239DB132", 3, 10000, 2500.00, 2.9, 1);
+("239DB132", 3, 10000, 2500.00, 2.9, 1),
+("JHGBF12", 2, 12000, 3000.00, 3.5, 2),
+("KLOP123", 1, 15000, 3750.00, 2.8, 3),
+("WERTY56", 3, 11000, 2750.00, 2.6, 4),
+("XCVB98H", 2, 18000, 4500.00, 3.2, 5),
+("LKJH654", 1, 20000, 5000.00, 3.9, 6),
+("ASDFGH1", 3, 13000, 3250.00, 3.1, 7),
+("QWERT23", 2, 14000, 3500.00, 3.3, 8),
+("ZXCVB67", 1, 16000, 4000.00, 3.7, 9),
+("POIUY45", 3, 17000, 4250.00, 3.4, 10),
+("MNBVC89", 2, 19000, 4750.00, 3.6, 11),
+("LKJHG21", 1, 22000, 5500.00, 3.8, 12),
+("QWERTY8", 3, 24000, 6000.00, 4.1, 13),
+("ASDFGH4", 2, 26000, 6500.00, 4.5, 14),
+("ZXCVBN5", 1, 28000, 7000.00, 4.2, 15),
+("POIUYT6", 3, 30000, 7500.00, 4.6, 16),
+("MNBVCX7", 2, 32000, 8000.00, 4.8, 17),
+("LKJHGF9", 1, 35000, 8750.00, 4.9, 18),
+("QWERT12", 3, 38000, 9500.00, 5.1, 19),
+("ASDFGH3", 2, 40000, 10000.00, 5.5, 20);
 
 INSERT INTO employee(employee_name, employee_username, employee_password, employee_type_id) VALUES
 ("Bob", "Bob123", "password", 1),
@@ -148,4 +213,11 @@ customer_id, car_id, damage_report_id) VALUES
 INSERT INTO damage_on_report(damage_report_id, damage_type_id) VALUES
 (1,1),
 (1,2);
-  
+
+INSERT INTO model_image(model_image_url) VALUES
+("https://png.pngtree.com/png-clipart/20190604/original/pngtree-vector-car-png-image_1312227.jpg"); 
+
+SET SQL_SAFE_UPDATES = 0;
+UPDATE model SET model_image_id = 1;
+SET SQL_SAFE_UPDATES = 1;
+ 
