@@ -40,6 +40,12 @@ public class Repository {
                 damageReport.getDamage_report_overdriven_km(), damageReport.getEmployee_id(), rentalContractId);
     }
 
+    public List<DamageType> getAllDamageTypes() {
+        String sql = "SELECT * FROM damage_type";
+        RowMapper<DamageType> rowMapper = new BeanPropertyRowMapper<>(DamageType.class);
+        return template.query(sql, rowMapper);
+    }
+
     public Employee getEmployee(String username) {
         String sql = "SELECT * FROM employee WHERE employee_username = ?";
         RowMapper<Employee> rowMapper = new BeanPropertyRowMapper<>(Employee.class);

@@ -100,6 +100,7 @@ public class Controller {
     @GetMapping("/createDamageReport")
     public String createDamageReport(Model model) {
         model.addAttribute("contractList", service.getAllRentalContracts());
+        model.addAttribute("damageTypeList", service.getAllDamageTypes());
         return loginCheck("createDamageReport");
     }
 

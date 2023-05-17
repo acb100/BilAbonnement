@@ -16,6 +16,10 @@ public class Service {
         repo.addRentalContract(rentalContract, repo.addDamageReport());
     }
 
+    public List<DamageType> getAllDamageTypes(){
+        return repo.getAllDamageTypes();
+    }
+
     public int getEmployeeID(String username){
         return repo.getEmployee(username).getEmployee_id();
     }

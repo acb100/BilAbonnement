@@ -57,6 +57,9 @@
       <input type="text" name="damage_report_comment">
       <label>Overdriven KM</label>
       <input type="number" name="damage_report_overdriven_km" value="0">
+      <label>Damages</label>
+      <input th:each="damageType: ${damageTypeList}" type="checkbox" th:value="${damageType.damage_type_id}">
+      <label th:each="damageType: ${damageTypeList}"><span th:text="${damageType.damage_type_name}"></span></label><br>
       <input type="text" th:value="${session.employeeId}" name="employee_id" style="display:none">
       <input type="submit" value="Create" class="create_contract_btn">
     </form>
