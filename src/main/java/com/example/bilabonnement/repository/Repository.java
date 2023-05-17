@@ -90,4 +90,14 @@ public class Repository {
         RowMapper<RentalContract> rowMapper = new BeanPropertyRowMapper<>(RentalContract.class);
         return template.queryForObject(sql, rowMapper, rentalContractId);
     }
+    public List<Car> fetchAllCars(){
+        String sql = "SELECT ongoing, car_id, vin_nr, equipment_level, base_price, vat, emission," +
+                " model_name, brand_name " +
+                "FROM car " +
+                "LEFT JOIN rental_contract USING(car_id) " +
+                "JOIN model USING(model_id) " +
+                "JOIN brand USING(brand_id)";
+        RowMapper<Car> rowMapper = new BeanPropertyRowMapper<>(Car.class);
+        return template.query(sql, rowMapper);
+    }
 }

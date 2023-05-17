@@ -16,7 +16,9 @@ public class Car {
     private String model_name;
     private String brand_name;
 
-    public Car(int car_id, int equipment_level, String vin_nr, double base_price, double vat, double emission, int modelId, String model_name, String modelBrand, int brandId, String brand_name) {
+    private Boolean ongoing;
+
+    public Car(int car_id, int equipment_level, String vin_nr, double base_price, double vat, double emission, int modelId, String model_name, String modelBrand, int brandId, String brand_name, boolean ongoing) {
         this.car_id = car_id;
         this.equipment_level = equipment_level;
         this.vin_nr = vin_nr;
@@ -25,5 +27,6 @@ public class Car {
         this.emission = emission;
         this.model_name = model_name;
         this.brand_name = brand_name;
+        this.ongoing = ongoing;
     }
 }

@@ -53,4 +53,7 @@ public class Service {
     public void updateDamageReport(DamageReport damageReport, int rentalContractId) {
         repo.updateDamageReport(damageReport, rentalContractId);
     }
+    public List<Car> fetchAllCars(){
+        return repo.fetchAllCars();
+    }
 }

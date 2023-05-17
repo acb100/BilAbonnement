@@ -138,4 +138,10 @@ public class Controller {
         session.invalidate();
         return "redirect:/";
     }
+    @GetMapping("/carOverview")
+    public String fetchAllCars(Model model){
+        model.addAttribute("carList", service.fetchAllCars());
+        return loginCheck("carOverviewPage");
+
+    }
 }
