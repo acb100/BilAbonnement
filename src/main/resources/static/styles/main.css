@@ -42,6 +42,12 @@ body {
     border: none;
 }
 
+/* Search filter select design */
+#search_filter{
+    height: 35px;
+    font-size: 15px;
+}
+
 /* Search bar button design */
 #top_header .search-container button {
     float: right;
