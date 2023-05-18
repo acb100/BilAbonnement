@@ -4,6 +4,7 @@ import com.example.bilabonnement.model.DamageReport;
 import com.example.bilabonnement.model.RentalContract;
 import com.example.bilabonnement.service.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import jakarta.servlet.http.HttpServletRequest;
@@ -18,8 +19,8 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import java.util.Arrays;
 import java.util.List;
 
-@org.springframework.stereotype.Controller
-public class Controller {
+@Controller
+public class HomeController {
     //TODO refresh function for dashboard
     //TODO discuss renaming header css to main
     //TODO review damage report reference

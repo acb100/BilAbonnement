@@ -37,8 +37,8 @@
                     <option value="model">Model</option>
                     <option value="brand">Brand</option>
                     <option value="skadesrapport">Skadesrapporter</option>
-                    <option value="customer">kunder</option>
-                    <option value="car">Bil</option>
+                    <option value="customer">Navn</option>
+                    <option value="car">Car</option>
                 </select>
                 <input type="text" placeholder="Search.." name="search">
                 <button type="submit"><i class="fa fa-search"></i></button>
@@ -108,30 +108,6 @@
         </tr>
         </tbody>
     </table>
-    <div th:if="${results}">
-        <h3>Search result:</h3>
-        <tr>
-            <th>Car ID</th>
-            <th>VIN Number</th>
-            <th>Equipment Level</th>
-            <th>Base Price</th>
-            <th>VAT</th>
-            <th>Emission</th>
-            <th>Model Name</th>
-            <th>Brand Name</th>
-        </tr>
-        <tr th:each="car : ${results}">
-            <td th:text="${car.car_id}"></td>
-            <td th:text="${car.vin_nr}"></td>
-            <td th:text="${car.equipment_level}"></td>
-            <td th:text="${car.base_price}"></td>
-            <td th:text="${car.vat}"></td>
-            <td th:text="${car.emission}"></td>
-            <td th:text="${car.model_name}"></td>
-            <td th:text="${car.brand_name}"></td>
-        </tr>
-    </div>
-
     <!-- Check if there are less than 15 unused cars -->
     <div th:if="${unusedCarRows &lt;= 15}">
         <p>Der er mindre end 15 ledige biler tilbage</p>
