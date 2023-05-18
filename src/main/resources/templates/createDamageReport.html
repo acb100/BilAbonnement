@@ -5,6 +5,7 @@
   <title>Create Rental Contract</title>
   <link rel="icon" type="image/x-icon" href="/img/favicon.png">
   <link rel="stylesheet" type="text/css" href="/styles/main.css">
+  <link rel="stylesheet" type="text/css" href="/styles/createDamageReport.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
@@ -45,6 +46,9 @@
   </div>
 </header>
 <main>
+  <div class="header_main">
+    <h1>Opret Skadesrapport</h1>
+  </div>
   <div class="form-container">
     <form action="/createDamageReport" method="post">
       <label>Choose Rental Contract</label>
@@ -52,18 +56,18 @@
         <option selected value=""></option>
         <option th:each="contract: ${contractList}" th:value="${contract.rental_contract_id}" name="rental_contract_id">
           <span th:text="${contract.rental_contract_id}"></span></option>
-      </select>
-      <label>Comments</label>
-      <input type="text" name="damage_report_comment">
+      </select> <br><br>
+      <label>Comments</label> <br>
+      <textarea name="damage_report_comment" rows="4" cols="50" class="comment_area"></textarea> <br><br>
       <label>Overdriven KM</label>
-      <input type="number" name="damage_report_overdriven_km" value="0"><br>
+      <input type="number" name="damage_report_overdriven_km" value="0" class="overdriven_km_input"> <br> <br>
       <label>Damages</label>
       <div th:each="damageType: ${damageTypeList}">
-      <input type="checkbox" th:value="${damageType.damage_type_id}" name="damage_type_ids">
-      <label><span th:text="${damageType.damage_type_name}"></span></label><br>
-      </div>
+        <input type="checkbox" th:value="${damageType.damage_type_id}" name="damage_type_ids" id="damage_type_box">
+        <label><span th:text="${damageType.damage_type_name}"></span></label><br>
+      </div> <br>
       <input type="text" th:value="${session.employeeId}" name="employee_id" style="display:none">
-      <input type="submit" value="Create" class="create_contract_btn">
+      <input type="submit" value="Create" class="create_damage_btn">
     </form>
   </div>
 
