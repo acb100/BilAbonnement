@@ -63,9 +63,13 @@ public class Controller {
         model.addAttribute("usedCarRows", service.getAllUsedCarRows());
         model.addAttribute("unusedCarRows", service.getAllUnusedCarRows());
         try {
-            if (session.getAttribute("employeeId").equals("3")) {
+            if (session.getAttribute("employeeTypeId").equals(3)) {
+                System.out.println("getting car sum");
                 model.addAttribute("carSum", service.fetchSumOfLeasedCars());
+                System.out.println("car sum gotten");
+                System.out.println(service.fetchSumOfLeasedCars());
             }
+
         } catch (NullPointerException ignored){
 
         }

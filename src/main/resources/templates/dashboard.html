@@ -50,7 +50,7 @@
 </header>
 <main>
     <div>
-        <span th:value="${carSum}"></span>
+        <span th:text="${carSum}"></span>
     </div>
     <!-- Check if there are less than 15 unused cars -->
     <div th:if="${unusedCarRows &lt;= 15}">
