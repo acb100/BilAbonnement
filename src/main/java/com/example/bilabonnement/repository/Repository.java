@@ -78,6 +78,16 @@ public class Repository {
         return template.query(sql, rowMapper);
     }
 
+    public List<Car> getAllCarModels() {
+        String sql = "SELECT b.brand_name, m.model_name, COUNT(*) AS model_count\n" +
+                "FROM brand b\n" +
+                "JOIN model m ON b.brand_id = m.brand_id\n" +
+                "JOIN car c ON m.model_id = c.model_id\n" +
+                "GROUP BY b.brand_name, m.model_name;\n";
+        RowMapper<Car> rowMapper = new BeanPropertyRowMapper<>(Car.class);
+        return template.query(sql, rowMapper);
+    }
+
     public List<Car> getAllUsedCars() {
         String sql = "SELECT car_id, vin_nr, equipment_level, base_price, vat, emission, model_name, brand_name  " +
                 "FROM car JOIN model USING (model_id) JOIN brand USING (brand_id) JOIN rental_contract USING (car_id)";

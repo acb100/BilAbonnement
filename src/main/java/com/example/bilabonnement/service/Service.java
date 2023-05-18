@@ -4,8 +4,8 @@ package com.example.bilabonnement.service;
 import com.example.bilabonnement.model.*;
 import com.example.bilabonnement.repository.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import java.util.Comparator;
+import java.util.ArrayList;
 import java.util.List;
 
 @org.springframework.stereotype.Service
@@ -44,6 +44,17 @@ public class Service {
     public List<Car> getAllUsedCars() { return repo.getAllUsedCars(); }
 
     public List<Car> getAllUnusedCars() { return repo.getAllUnusedCars(); }
+
+    public List<CarWithCount> getAllCarModels() {
+        List<Car> carModels = repo.getAllCarModels();
+        List<CarWithCount> carsWithCount = new ArrayList<>();
+        for (Car car : carModels) {
+            String combinedModel = car.getBrand_name() + " " + car.getModel_name();
+            CarWithCount carWithCount = new CarWithCount(combinedModel, car.getModel_count());
+            carsWithCount.add(carWithCount);
+        }
+        return carsWithCount;
+    }
 
     public int getAllUnusedCarRows(){
         return repo.countAllUnusedCarRows();

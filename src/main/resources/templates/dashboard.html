@@ -103,17 +103,20 @@
     <div>
         <span th:value="${carSum}"></span>
     </div>
-
     <!-- Check if there are less than 15 unused cars -->
     <div th:if="${unusedCarRows &lt;= 15}">
         <p>Der er mindre end 15 ledige biler tilbage</p>
     </div>
-
-    <div id="chart_div"></div>
-    <input type="hidden" id="unusedCarRows" th:value="${unusedCarRows}">
-    <input type="hidden" id="usedCarRows" th:value="${usedCarRows}">
-    <script type="text/javascript" src="/JS/GoogleGraphs.js">
-    </script>
+    <div id="chart_div">
+        <input type="hidden" id="unusedCarRows" th:value="${unusedCarRows}">
+        <input type="hidden" id="usedCarRows" th:value="${usedCarRows}">
+        <script type="text/javascript" src="/JS/GoogleGraphs.js">
+        </script>
+            <div id="columnchart_cars" style="width: 900px; height: 300px;"></div>
+    </div>
+    <div id="piechart" style="width: 900px; height: 500px;">
+        <input type="hidden" id="allCars" th:value="${allCars}">
+    </div>
 </main>
 <footer>
 

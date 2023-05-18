@@ -1,8 +1,11 @@
 package com.example.bilabonnement.controller;
 
+import com.example.bilabonnement.model.CarWithCount;
 import com.example.bilabonnement.model.DamageReport;
 import com.example.bilabonnement.model.RentalContract;
 import com.example.bilabonnement.service.Service;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -51,7 +54,10 @@ public class Controller {
     }
 
     @GetMapping("/dashboard")
-    public String dashboard(Model model, HttpSession session) {
+    public String dashboard(Model model, HttpSession session) throws JsonProcessingException {
+        List<CarWithCount> allCars = service.getAllCarModels();
+        ObjectMapper objectMapper = new ObjectMapper();
+        String allCarsJson = objectMapper.writeValueAsString(allCars);
         model.addAttribute("usedCars", service.getAllUsedCars());
         model.addAttribute("unusedCars", service.getAllUnusedCars());
         model.addAttribute("usedCarRows", service.getAllUsedCarRows());
@@ -59,8 +65,11 @@ public class Controller {
         if(session.getAttribute("employeeId").equals("3")){
             model.addAttribute("carSum", service.fetchSumOfLeasedCars());
         }
+        model.addAttribute("allCars", allCarsJson);
         return loginCheck("dashboard");
     }
+
+
 
     @GetMapping("/createRentalContract")
     public String createRentalContract(Model model) {
