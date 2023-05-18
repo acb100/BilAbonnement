@@ -62,8 +62,12 @@ public class Controller {
         model.addAttribute("unusedCars", service.getAllUnusedCars());
         model.addAttribute("usedCarRows", service.getAllUsedCarRows());
         model.addAttribute("unusedCarRows", service.getAllUnusedCarRows());
-        if (session.getAttribute("employeeId").equals("3")){
-            model.addAttribute("carSum", service.fetchSumOfLeasedCars());
+        try {
+            if (session.getAttribute("employeeId").equals("3")) {
+                model.addAttribute("carSum", service.fetchSumOfLeasedCars());
+            }
+        } catch (NullPointerException ignored){
+
         }
         model.addAttribute("allCars", allCarsJson);
         return loginCheck("dashboard");
