@@ -19,7 +19,8 @@
         <img src="img/small_logo_transparent.png" alt="Logo" id="small_logo">
         <ul>
             <li><a th:href="@{dashboard}" style="background-color: #05242f">Dashboard</a></li>
-            <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{createRentalContract}">Registrer Lejekontrakt</a></li>
+            <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{createRentalContract}">Registrer Lejekontrakt</a>
+            </li>
             <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{viewRentalContracts}">Se Lejekontrakter</a></li>
             <li th:if="${session.employeeTypeId} =='2'"><a th:href="@{createDamageReport}">Lav Skadesrapport</a></li>
             <li th:if="${session.employeeTypeId} =='2'"><a th:href="@{viewRentalContracts}">Se Skadesrapporter</a></li>
@@ -30,21 +31,23 @@
     </nav>
     <div id="top_header">
         <div class="search-container">
-            <form action="/search">
-                <input type="text" placeholder="Search.." name="search">
+            <form th:action="@{/search}" method="get">
+                <input type="text" id="keyword" name="keyword" required placeholder="Søg her..">
                 <button type="submit"><i class="fa fa-search"></i></button>
             </form>
         </div>
         <div id="user_profile">
             <p style="color: whitesmoke"><span th:text="${session.employeeUsername}"></span></p>
             <div class="dropdown">
-            <img src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png" alt="Profile pic" id="profile_pic">
+                <img src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png" alt="Profile pic"
+                     id="profile_pic">
                 <div class="dropdown-content">
                     <a th:href="@{myprofile}">Profile</a>
                     <a th:href="@{logout}">Logout</a>
                 </div>
             </div>
         </div>
+
     </div>
 </header>
 <main>
@@ -99,6 +102,29 @@
         </tr>
         </tbody>
     </table>
+    <div th:if="${results}">
+        <h3>Search result:</h3>
+        <tr>
+            <th>Car ID</th>
+            <th>VIN Number</th>
+            <th>Equipment Level</th>
+            <th>Base Price</th>
+            <th>VAT</th>
+            <th>Emission</th>
+            <th>Model Name</th>
+            <th>Brand Name</th>
+        </tr>
+        <tr th:each="car : ${results}">
+            <td th:text="${car.car_id}"></td>
+            <td th:text="${car.vin_nr}"></td>
+            <td th:text="${car.equipment_level}"></td>
+            <td th:text="${car.base_price}"></td>
+            <td th:text="${car.vat}"></td>
+            <td th:text="${car.emission}"></td>
+            <td th:text="${car.model_name}"></td>
+            <td th:text="${car.brand_name}"></td>
+        </tr>
+    </div>
 
     <!-- Check if there are less than 15 unused cars -->
     <div th:if="${unusedCarRows &lt;= 15}">
