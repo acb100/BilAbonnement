@@ -99,6 +99,9 @@
         </tr>
         </tbody>
     </table>
+    <div>
+        <span th:value="${carSum}"></span>
+    </div>
 
     <!-- Check if there are less than 15 unused cars -->
     <div th:if="${unusedCarRows &lt;= 15}">

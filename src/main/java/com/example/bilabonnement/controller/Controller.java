@@ -51,11 +51,14 @@ public class Controller {
     }
 
     @GetMapping("/dashboard")
-    public String dashboard(Model model) {
+    public String dashboard(Model model, HttpSession session) {
         model.addAttribute("usedCars", service.getAllUsedCars());
         model.addAttribute("unusedCars", service.getAllUnusedCars());
         model.addAttribute("usedCarRows", service.getAllUsedCarRows());
         model.addAttribute("unusedCarRows", service.getAllUnusedCarRows());
+        if(session.getAttribute("employeeId").equals("3")){
+            model.addAttribute("carSum", service.fetchSumOfLeasedCars());
+        }
         return loginCheck("dashboard");
     }
 
@@ -151,4 +154,9 @@ public class Controller {
         return loginCheck("carOverviewPage");
 
     }
+    /*@GetMapping("/leasedCarSum")
+    public String sumOfLeasedCars(Model model){
+        model.addAttribute("carSum", service.fetchSumOfLeasedCars());
+        return loginCheck("dashboard");
+    }*/
 }
