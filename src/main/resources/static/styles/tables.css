@@ -1,5 +1,6 @@
 #car_image{
     width: 100%;
+    vertical-align: middle
 }
 table{
     display: table;
