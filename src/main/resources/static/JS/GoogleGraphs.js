@@ -1,59 +1,58 @@
-google.charts.load('current', {packages: ['corechart', 'bar']});
-google.charts.setOnLoadCallback(drawAxisTickColors);
+google.charts.load("current", { packages: ['corechart'] });
+google.charts.setOnLoadCallback(drawChart);
 
-function drawAxisTickColors() {
-    var unusedCarRows = document.getElementById('unusedCarRows').value;
-    var usedCarRows = document.getElementById('usedCarRows').value;
-    var data = new google.visualization.DataTable();
-    data.addColumn('timeofday', 'Time of Day');
-    data.addColumn('number', 'Motivation Level');
-    data.addColumn('number', 'Energy Level');
+function drawChart() {
+    var unusedCarRows = parseInt(document.getElementById('unusedCarRows').value);
+    var usedCarRows = parseInt(document.getElementById('usedCarRows').value);
+    var data = google.visualization.arrayToDataTable([
+        ["Element", "Mængde", { role: "style" }],
+        ["Biler på Lager", unusedCarRows, "gold"],
+        ["Brugte Biler", usedCarRows, "silver"],
+    ]);
 
-    data.addRows([
-        [{v: [8, 0, 0], f: '8 am'}, 1, .25],
-        [{v: [9, 0, 0], f: '9 am'}, 2, .5],
+    var view = new google.visualization.DataView(data);
+    view.setColumns([
+        0,
+        1,
+        {
+            calc: "stringify",
+            sourceColumn: 1,
+            type: "string",
+            role: "annotation",
+        },
+        2,
     ]);
 
     var options = {
-        title: 'Motivation and Energy Level Throughout the Day',
-        focusTarget: 'category',
-        hAxis: {
-            title: 'Time of Day',
-            format: 'h:mm a',
-            viewWindow: {
-                min: [7, 30, 0],
-                max: [17, 30, 0]
-            },
-            textStyle: {
-                fontSize: 14,
-                color: '#053061',
-                bold: true,
-                italic: false
-            },
-            titleTextStyle: {
-                fontSize: 18,
-                color: '#053061',
-                bold: true,
-                italic: false
-            }
-        },
-        vAxis: {
-            title: 'Rating (scale of 1-10)',
-            textStyle: {
-                fontSize: 18,
-                color: '#67001f',
-                bold: false,
-                italic: false
-            },
-            titleTextStyle: {
-                fontSize: 18,
-                color: '#67001f',
-                bold: true,
-                italic: false
-            }
-        }
+        title: "Status på Biler",
+        width: 600,
+        height: 400,
+        bar: { groupWidth: "95%" },
+        legend: { position: "none" },
+    };
+    var chart = new google.visualization.ColumnChart(
+        document.getElementById("columnchart_cars")
+    );
+    chart.draw(view, options);
+
+    var allCarsJson = document.getElementById('allCars').value;
+    var allCars = JSON.parse(allCarsJson);
+
+    var carData = [['Car Model', 'Quantity']];
+    // Add car model data to the array
+    allCars.forEach(function (car) {
+        var model = car.model_name;
+        var quantity = car.model_count;
+        carData.push([model, quantity]);
+    });
+
+    var data = google.visualization.arrayToDataTable(carData);
+
+    var options = {
+        title: 'Car Models'
     };
 
-    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
     chart.draw(data, options);
 }
