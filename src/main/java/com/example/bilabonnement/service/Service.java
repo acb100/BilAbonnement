@@ -73,4 +73,7 @@ public class Service {
     public List<Car> fetchAllCars(){
         return repo.fetchAllCars();
     }
+    public int fetchSumOfLeasedCars(){
+        return repo.fetchSumOfLeasedCars();
+    }
 }

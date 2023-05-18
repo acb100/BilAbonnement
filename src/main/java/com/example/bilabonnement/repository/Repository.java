@@ -139,4 +139,8 @@ public class Repository {
         RowMapper<Car> rowMapper = new BeanPropertyRowMapper<>(Car.class);
         return template.query(sql, rowMapper);
     }
+    public int fetchSumOfLeasedCars(){
+        String sql ="SELECT SUM(base_price) AS total_price FROM car LEFT JOIN rental_contract USING(car_id) WHERE ongoing = true";
+        return template.queryForObject(sql, Integer.class);
+    }
 }
