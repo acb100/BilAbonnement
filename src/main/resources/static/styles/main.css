@@ -188,3 +188,24 @@ main {
         border: 1px solid #ccc;
     }
 }
+#car_image{
+    width: 100%;
+}
+table{
+    display: table;
+    table-layout: fixed;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    border-collapse: collapse;
+    margin: auto;
+    padding: 1px;
+    font-size: 100%;
+}
+th{
+    border: 1px solid black;
+    padding: 7px;
+}
+td{
+    border: 1px solid black;
+}

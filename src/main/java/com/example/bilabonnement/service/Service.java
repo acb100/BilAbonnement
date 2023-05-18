@@ -5,6 +5,7 @@ import com.example.bilabonnement.model.*;
 import com.example.bilabonnement.repository.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Comparator;
 import java.util.List;
 
 @org.springframework.stereotype.Service
@@ -71,7 +72,9 @@ public class Service {
         repo.addDamageOnReport(damageReport, rentalContractId);
     }
     public List<Car> fetchAllCars(){
-        return repo.fetchAllCars();
+        List<Car> data = repo.fetchAllCars();
+        data.sort(Comparator.comparing(Car::getOngoing, Comparator.nullsLast(Boolean::compareTo)));
+        return data;
     }
     public int fetchSumOfLeasedCars(){
         return repo.fetchSumOfLeasedCars();

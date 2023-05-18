@@ -49,19 +49,20 @@
     <table>
         <thead>
         <tr>
+            <th>Billede</th>
             <th>Vognnummer</th>
             <th>Stelnummer</th>
             <th>Mærke</th>
             <th>Model</th>
             <th>Udstyrsniveau</th>
-            <th>Udledningsniveau</th>
+            <th>Udledning</th>
             <th>Pris eksl. skatter og afgifter</th>
             <th>Skatter og afgifter</th>
             <th>Status</th>
         </tr>
         </thead>
         <tr th:each="cars: ${carList}">
-            <td><img th:src="${cars.model_image_url}"></td>
+            <td><img th:src="${cars.model_image_url}" id="car_image"></td>
             <td th:text="${cars.car_id}"></td>
             <td th:text="${cars.vin_nr}"></td>
             <td th:text="${cars.brand_name}"></td>
