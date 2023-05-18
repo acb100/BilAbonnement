@@ -62,14 +62,12 @@ public class Controller {
         model.addAttribute("unusedCars", service.getAllUnusedCars());
         model.addAttribute("usedCarRows", service.getAllUsedCarRows());
         model.addAttribute("unusedCarRows", service.getAllUnusedCarRows());
-        if(session.getAttribute("employeeId").equals("3")){
+        if (session.getAttribute("employeeId").equals("3")){
             model.addAttribute("carSum", service.fetchSumOfLeasedCars());
         }
         model.addAttribute("allCars", allCarsJson);
         return loginCheck("dashboard");
     }
-
-
 
     @GetMapping("/createRentalContract")
     public String createRentalContract(Model model) {
