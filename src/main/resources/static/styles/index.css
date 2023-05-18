@@ -100,6 +100,13 @@ div.form-group {
     margin-top: 2rem;
 }
 
+/* Effect when hovering button */
+.btn:hover{
+    background-color: #0e4c67;
+    transition-duration: 0.4s;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
 /* Adresse, cvr osv.. */
 .footer {
     margin-top: 7%;
