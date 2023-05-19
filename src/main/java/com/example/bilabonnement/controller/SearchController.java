@@ -19,6 +19,6 @@ public class SearchController {
     public String searchForCar(@RequestParam("keyword") String keyword, Model model) {
         List<Car> carList = searchRepo.findCarByKeyword(keyword);
         model.addAttribute("cars", carList);
-        return "dashboard";
+        return "searchResults";
     }
 }
