@@ -22,14 +22,15 @@
         <form method="post" class="form-container">
             <div class="form-group">
                 <label for="Username">Brugernavn</label>
-                <input id="Username" class="form-control" type="text" name="username" placeholder="Indtast Brugernavn" value="bob123">
+                <input id="Username" class="form-control" type="text" name="username" placeholder="Indtast Brugernavn">
             </div>
             <div class="form-group">
                 <label for="Password">Adgangskode</label>
-                <input id="Password" class="form-control" style="-webkit-text-security: disc" type="text" name="password" placeholder="Indtast Adgangskode" value="password">
+                <input id="Password" class="form-control" style="-webkit-text-security: disc" type="text" name="password" placeholder="Indtast Adgangskode">
             </div>
             <button class="btn" type="submit">Log ind</button>
             <div class="text-center footer">
+                <p th:if="${loginError}" style="color: red;">Forkert Brugernavn eller Password</p>
                 <p>
                     <strong>Bilabonnement A/S</strong>
                     <br>Slotsherrensvej 411c
