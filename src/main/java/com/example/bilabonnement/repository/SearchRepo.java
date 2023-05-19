@@ -15,7 +15,7 @@ public class SearchRepo {
     @Autowired
     JdbcTemplate template;
     public List<Car> findCarByKeyword(String keyword) {
-        String sql = "SELECT * FROM car WHERE";
+        String sql = "SELECT * FROM car WHERE car_id= ?";
         RowMapper<Car> rowMapper = new BeanPropertyRowMapper<>(Car.class);
         return template.query(sql, rowMapper);
     }
