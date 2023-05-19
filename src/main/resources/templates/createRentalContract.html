@@ -54,27 +54,30 @@
     </div>
 </header>
 <main>
-    <div>
+    <div class="header_main">
+        <h1>Opret Lejekontrakt</h1>
+    </div>
+    <div class="form-container">
         <form action="/createRentalContract" method="post">
-            <label>Enter start date</label>
-            <input type="date" name="start_date">
-            <label>Enter end date</label>
-            <input type="date" name="end_date">
-            <label>Choose subscription type</label>
+            <label>Enter start date</label> <br>
+            <input type="date" name="start_date"> <br><br>
+            <label>Enter end date</label> <br>
+            <input type="date" name="end_date"> <br><br>
+            <label>Choose subscription type</label><br>
             <select name="subscription_type" id="subscription_choice">
                 <option value="Limited">Limited</option>
                 <option value="Unlimited">Unlimited</option>
-            </select>
-            <label>Choose Customer</label>
+            </select> <br> <br>
+            <label>Choose Customer</label><br>
             <select name="customer_id" id="customer_choice">
                 <option selected value=""></option>
                 <option th:each="customer: ${customers}" th:value="${customer.getCustomer_id}"><span th:text="${customer.getCustomer_name}"></span></option>
-            </select>
-            <label>Choose Car</label>
+            </select> <br> <br>
+            <label>Choose Car</label><br>
             <select name="car_id" id="car_choice">
                 <option selected value=""></option>
                 <option th:each="car: ${cars}" th:value="${car.car_id}"><span th:text="${car.model_name}"></span></option>
-            </select>
+            </select> <br><br>
             <input type="text" th:value="${session.employeeId}" name="employee_id" style="display:none">
             <input type="submit" value="Create" class="create_contract_btn">
         </form>
