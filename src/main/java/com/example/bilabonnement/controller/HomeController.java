@@ -42,15 +42,16 @@ public class HomeController {
     }
 
     @PostMapping("/")
-    public String index(@RequestParam("username") String employeeUsername, @RequestParam("password") String employeePassword, HttpSession session) {
-        if (service.employeeExists(employeeUsername, employeePassword) != null) {
+    public String index(@RequestParam("username") String employeeUsername, @RequestParam("password") String employeePassword, HttpSession session, Model model) {
+        if (service.employeeExists(employeeUsername, employeePassword)) {
             session.setAttribute("isLoggedIn", true);
             session.setAttribute("employeeId", service.getEmployeeID(employeeUsername));
             session.setAttribute("employeeUsername", service.getEmployee(employeeUsername).getEmployee_username());
             session.setAttribute("employeeTypeId", service.getEmployee(employeeUsername).getEmployee_type_id());
             return "redirect:/dashboard";
         } else {
-            return "redirect:/";
+            model.addAttribute("loginError", true);
+            return "index";
         }
     }
 
