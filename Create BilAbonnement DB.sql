@@ -187,7 +187,8 @@ INSERT INTO car(vin_nr, equipment_level, base_price, vat, emission, model_id) VA
 ("MNBVCX7", 2, 32000, 8000.00, 4.8, 17),
 ("LKJHGF9", 1, 35000, 8750.00, 4.9, 18),
 ("QWERT12", 3, 38000, 9500.00, 5.1, 19),
-("ASDFGH3", 2, 40000, 10000.00, 5.5, 20);
+("ASDFGH3", 2, 40000, 10000.00, 5.5, 20),
+("ASDFSDA", 2, 44000, 12000.00, 5.5, 20);
 
 INSERT INTO employee(employee_name, employee_username, employee_password, employee_type_id) VALUES
 ("Bob", "Bob123", "password", 1),

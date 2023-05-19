@@ -38,7 +38,7 @@ function drawChart() {
     var allCarsJson = document.getElementById('allCars').value;
     var allCars = JSON.parse(allCarsJson);
 
-    var carData = [['Car Model', 'Quantity']];
+    var carData = [['Bil Modeller', 'Mængde']];
     // Add car model data to the array
     allCars.forEach(function (car) {
         var model = car.model_name;

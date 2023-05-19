@@ -65,7 +65,7 @@
     <div th:if="${unusedCarRows &lt;= 15}">
         <p>Der er mindre end 15 ledige biler tilbage</p>
     </div>
-    <div id="chart_div">
+    <div id="chart_div" style="background-color: white;">
         <input type="hidden" id="unusedCarRows" th:value="${unusedCarRows}">
         <input type="hidden" id="usedCarRows" th:value="${usedCarRows}">
         <script type="text/javascript" src="/JS/GoogleGraphs.js">
