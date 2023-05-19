@@ -21,7 +21,7 @@
             <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{viewRentalContracts}">Se Lejekontrakter</a></li>
             <li th:if="${session.employeeTypeId} =='2'"><a th:href="@{createDamageReport}">Lav Skadesrapport</a></li>
             <li th:if="${session.employeeTypeId} =='2'"><a th:href="@{viewRentalContracts}">Se Skadesrapporter</a></li>
-            <li th:if="${session.employeeTypeId} =='3'"><a th:href="@{viewRentalContracts}" style="background-color: #05242f">Overblik biler</a></li>
+            <li th:if="${session.employeeTypeId} =='3'"><a th:href="@{carOverview}" style="background-color: #05242f">Overblik biler</a></li>
             <li th:if="${session.employeeTypeId} =='3'"><a th:href="@{viewRentalContracts}">Registrer biler</a></li>
             <li><a th:href="@{/logout}">Logout</a></li>
         </ul>
