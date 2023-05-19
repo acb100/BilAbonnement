@@ -15,7 +15,6 @@ public class Car {
     private double emission;
     private String model_name;
     private String brand_name;
-
     private Boolean ongoing;
     private String model_image_url;
     private int model_count;
@@ -37,4 +36,5 @@ public class Car {
         this.model_name = model_name;
         this.model_count = model_count;
     }
+
 }

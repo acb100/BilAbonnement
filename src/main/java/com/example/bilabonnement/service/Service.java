@@ -2,7 +2,7 @@ package com.example.bilabonnement.service;
 
 
 import com.example.bilabonnement.model.*;
-import com.example.bilabonnement.repository.Repository;
+import com.example.bilabonnement.repository.HomeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Comparator;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import java.util.List;
 public class Service {
 
     @Autowired
-    Repository repo;
+    HomeRepository repo;
     public void addRentalContract(RentalContract rentalContract){
         repo.addRentalContract(rentalContract, repo.addDamageReport());
     }

@@ -29,6 +29,15 @@
     <div id="top_header">
         <div class="search-container">
             <form action="/search">
+                <select name="search_filter" id="search_filter">
+                    <option selected value="all">All</option>
+                    <option value="lejekontrakter">Lejekontrakter</option>
+                    <option value="model">Model</option>
+                    <option value="brand">Brand</option>
+                    <option value="skadesrapport">Skadesrapporter</option>
+                    <option value="customer">kunder</option>
+                    <option value="car">Bil</option>
+                </select>
                 <input type="text" placeholder="Search.." name="search">
                 <button type="submit"><i class="fa fa-search"></i></button>
             </form>

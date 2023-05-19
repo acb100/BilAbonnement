@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:if="${carList}">
+    <h3>Search Results:</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Car ID</th>
+            <th>VIN Number</th>
+            <th>Equipment Level</th>
+            <th>Base Price</th>
+            <th>VAT</th>
+            <th>Emission</th>
+            <th>Model Name</th>
+            <th>Brand Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="car : ${carList}">
+            <td th:text="${car.car_id}"></td>
+            <td th:text="${car.vin_nr}"></td>
+            <td th:text="${car.equipment_level}"></td>
+            <td th:text="${car.base_price}"></td>
+            <td th:text="${car.vat}"></td>
+            <td th:text="${car.emission}"></td>
+            <td th:text="${car.model_name}"></td>
+            <td th:text="${car.brand_name}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
