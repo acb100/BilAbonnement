@@ -15,8 +15,8 @@ public class SearchController {
 
     SearchRepo searchRepo;
 
-    @GetMapping("/search")
-    public String searchForCar(@RequestParam("keyword") String keyword, Model model) {
+    @GetMapping("/search1")
+    public String searchForCar(@RequestParam("search_filter") String keyword, Model model) {
         List<Car> carList = searchRepo.findCarByKeyword(keyword);
         model.addAttribute("cars", carList);
         return "searchResults";

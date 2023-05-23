@@ -154,4 +154,10 @@ public class HomeRepository {
         String sql ="SELECT SUM(base_price) AS total_price FROM car LEFT JOIN rental_contract USING(car_id) WHERE ongoing = true";
         return template.queryForObject(sql, Integer.class);
     }
+
+    public List<RentalContract> searchRentalContracts(String keyword){
+        String sql ="SELECT * FROM rental_contract WHERE car_id LIKE '%?%'";
+        RowMapper<RentalContract> rowMapper = new BeanPropertyRowMapper<>(RentalContract.class);
+        return template.query(sql, rowMapper, keyword);
+    }
 }
