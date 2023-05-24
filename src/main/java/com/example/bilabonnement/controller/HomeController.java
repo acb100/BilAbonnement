@@ -1,8 +1,6 @@
 package com.example.bilabonnement.controller;
 
-import com.example.bilabonnement.model.CarWithCount;
-import com.example.bilabonnement.model.DamageReport;
-import com.example.bilabonnement.model.RentalContract;
+import com.example.bilabonnement.model.*;
 import com.example.bilabonnement.service.Service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -167,6 +165,14 @@ public class HomeController {
         model.addAttribute("carList", service.fetchAllCars());
         return loginCheck("carOverviewPage");
 
+    }
+
+
+    @GetMapping("/search")
+    public String search(@RequestParam("search_filter") String searchFilter, @RequestParam("search_value") String keyword, Model model) {
+        SearchResult results = service.searchForKeyword(searchFilter, keyword);
+        model.addAttribute("results", results);
+        return loginCheck("searchResults");
     }
     /*@GetMapping("/leasedCarSum")
     public String sumOfLeasedCars(Model model){

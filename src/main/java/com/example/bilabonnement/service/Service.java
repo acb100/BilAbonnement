@@ -90,4 +90,16 @@ public class Service {
     public int fetchSumOfLeasedCars(){
         return repo.fetchSumOfLeasedCars();
     }
+
+    public SearchResult searchForKeyword(String searchFilter, String keyword){
+        SearchResult searchResults = new SearchResult();
+        switch (searchFilter){
+            case "all" -> searchResults = repo.searchAll(keyword);
+            case "lejekontrakter" -> searchResults.setRentalContracts(repo.searchRentalContracts(keyword));
+            case "car" -> searchResults.setCars(repo.searchCars(keyword));
+            case "skadesrapport" -> searchResults.setDamageReports(repo.searchDamageReports(keyword));
+
+        }
+        return searchResults;
+    }
 }

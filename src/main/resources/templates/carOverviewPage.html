@@ -12,16 +12,17 @@
     <link rel="stylesheet" type="text/css" href="/styles/tables.css">
 </head>
 <body>
+<!--Header with sidebar and top header-->
 <header>
     <nav id="sidenav">
         <img src="img/small_logo_transparent.png" alt="Logo" id="small_logo">
         <ul>
-            <li><a th:href="@{dashboard}" >Dashboard</a></li>
+            <li><a th:href="@{dashboard}" style="background-color: #05242f">Dashboard</a></li>
             <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{createRentalContract}">Registrer Lejekontrakt</a></li>
             <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{viewRentalContracts}">Se Lejekontrakter</a></li>
             <li th:if="${session.employeeTypeId} =='2'"><a th:href="@{createDamageReport}">Lav Skadesrapport</a></li>
             <li th:if="${session.employeeTypeId} =='2'"><a th:href="@{viewRentalContracts}">Se Skadesrapporter</a></li>
-            <li th:if="${session.employeeTypeId} =='3'"><a th:href="@{carOverview}" style="background-color: #05242f">Overblik biler</a></li>
+            <li th:if="${session.employeeTypeId} =='3'"><a th:href="@{carOverview}">Overblik biler</a></li>
             <li th:if="${session.employeeTypeId} =='3'"><a th:href="@{viewRentalContracts}">Registrer biler</a></li>
             <li><a th:href="@{/logout}">Logout</a></li>
         </ul>
@@ -32,13 +33,11 @@
                 <select name="search_filter" id="search_filter">
                     <option selected value="all">All</option>
                     <option value="lejekontrakter">Lejekontrakter</option>
-                    <option value="model">Model</option>
-                    <option value="brand">Brand</option>
                     <option value="skadesrapport">Skadesrapporter</option>
-                    <option value="customer">kunder</option>
-                    <option value="car">Bil</option>
+                    <option value="customer">Navn</option>
+                    <option value="car">Biler</option>
                 </select>
-                <input type="text" placeholder="Search.." name="search">
+                <input type="text" placeholder="Search.." name="search_value">
                 <button type="submit"><i class="fa fa-search"></i></button>
             </form>
         </div>
