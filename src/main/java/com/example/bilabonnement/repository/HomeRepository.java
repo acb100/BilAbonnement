@@ -123,6 +123,17 @@ public class HomeRepository {
         return template.query(sql, rowMapper);
     }
 
+    public List<CurrentDayCars> getAllCurrentDayContractCars() {
+        String sql = "SELECT rental_contract.rental_contract_id, rental_contract.start_date, rental_contract.end_date, car.vin_nr, brand.brand_name\n" +
+                "FROM rental_contract\n" +
+                "JOIN car ON rental_contract.car_id = car.car_id\n" +
+                "JOIN model ON car.model_id = model.model_id\n" +
+                "JOIN brand ON model.brand_id = brand.brand_id\n" +
+                "WHERE rental_contract.start_date = CURDATE();";
+        RowMapper<CurrentDayCars> rowMapper = new BeanPropertyRowMapper<>(CurrentDayCars.class);
+        return template.query(sql, rowMapper);
+    }
+
     public List<RentalContract> fetchAllRentalContractsForEmployee(int employeeId) {
         String sql = "SELECT * FROM rental_contract WHERE employee_id = ?";
         RowMapper<RentalContract> rowMapper = new BeanPropertyRowMapper<>(RentalContract.class);
