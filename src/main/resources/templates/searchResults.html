@@ -19,7 +19,8 @@
         <img src="img/small_logo_transparent.png" alt="Logo" id="small_logo">
         <ul>
             <li><a th:href="@{dashboard}" style="background-color: #05242f">Dashboard</a></li>
-            <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{createRentalContract}">Registrer Lejekontrakt</a></li>
+            <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{createRentalContract}">Registrer Lejekontrakt</a>
+            </li>
             <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{viewRentalContracts}">Se Lejekontrakter</a></li>
             <li th:if="${session.employeeTypeId} =='2'"><a th:href="@{createDamageReport}">Lav Skadesrapport</a></li>
             <li th:if="${session.employeeTypeId} =='2'"><a th:href="@{viewRentalContracts}">Se Skadesrapporter</a></li>
@@ -34,8 +35,6 @@
                 <select name="search_filter" id="search_filter">
                     <option selected value="all">All</option>
                     <option value="lejekontrakter">Lejekontrakter</option>
-                    <option value="model">Model</option>
-                    <option value="brand">Brand</option>
                     <option value="skadesrapport">Skadesrapporter</option>
                     <option value="customer">Navn</option>
                     <option value="car">Biler</option>
@@ -47,7 +46,8 @@
         <div id="user_profile">
             <p style="color: whitesmoke"><span th:text="${session.employeeUsername}"></span></p>
             <div class="dropdown">
-                <img src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png" alt="Profile pic" id="profile_pic">
+                <img src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png" alt="Profile pic"
+                     id="profile_pic">
                 <div class="dropdown-content">
                     <a th:href="@{myprofile}">Profile</a>
                     <a th:href="@{logout}">Logout</a>
@@ -57,37 +57,37 @@
     </div>
 </header>
 <main>
-    <h1>Search Results</h1>
-<div th:if="${results.getCars}">
-    <h3>Cars:</h3>
-    <table>
-        <thead>
-        <tr>
-            <th>Billede</th>
-            <th>Car ID</th>
-            <th>VIN Number</th>
-            <th>Equipment Level</th>
-            <th>Base Price</th>
-            <th>VAT</th>
-            <th>Emission</th>
-            <th>Model Name</th>
-            <th>Brand Name</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="car : ${results.getCars}">
-            <td th:text="${car.car_id}"></td>
-            <td th:text="${car.vin_nr}"></td>
-            <td th:text="${car.equipment_level}"></td>
-            <td th:text="${car.base_price}"></td>
-            <td th:text="${car.vat}"></td>
-            <td th:text="${car.emission}"></td>
-            <td th:text="${car.model_name}"></td>
-            <td th:text="${car.brand_name}"></td>
-        </tr>
-        </tbody>
-    </table>
-</div>
+    <h1>Search Results</h1><br>
+    <div th:if="${results.getCars}">
+        <h3>Cars:</h3>
+        <table>
+            <thead>
+            <tr>
+                <th>Car ID</th>
+                <th>VIN Number</th>
+                <th>Equipment Level</th>
+                <th>Base Price</th>
+                <th>VAT</th>
+                <th>Emission</th>
+                <th>Model Name</th>
+                <th>Brand Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="car : ${results.getCars}">
+                <td th:text="${car.car_id}"></td>
+                <td th:text="${car.vin_nr}"></td>
+                <td th:text="${car.equipment_level}"></td>
+                <td th:text="${car.base_price}"></td>
+                <td th:text="${car.vat}"></td>
+                <td th:text="${car.emission}"></td>
+                <td th:text="${car.model_name}"></td>
+                <td th:text="${car.brand_name}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
     <div th:if="${results.getRentalContracts}">
         <h3>Rental Contracts:</h3>
         <table>
@@ -119,6 +119,7 @@
             </tbody>
         </table>
     </div>
+    <br>
     <div th:if="${results.getCustomers}">
         <h3>Customers:</h3>
         <table>
@@ -146,6 +147,7 @@
             </tbody>
         </table>
     </div>
+    <br>
     <div th:if="${results.getDamageReports}">
         <h3>Damage Reports:</h3>
         <table>
@@ -155,7 +157,6 @@
                 <th>Damage Report Comment</th>
                 <th>Overdriven KM</th>
                 <th>Employee ID</th>
-                <th>Damage Type ID's</th>
             </tr>
             </thead>
             <tbody>
@@ -164,11 +165,11 @@
                 <td th:text="${damageReport.damage_report_comment}"></td>
                 <td th:text="${damageReport.damage_report_overdriven_km}"></td>
                 <td th:text="${damageReport.employee_id}"></td>
-                <td th:text="${damageReport.damage_type_ids}"></td>
             </tr>
             </tbody>
         </table>
     </div>
+    <br>
 </main>
 <footer>
 

@@ -197,4 +197,24 @@ public class HomeRepository {
         return template.query(sql, rowMapper, keyword, keyword, keyword, keyword, keyword, keyword, keyword, keyword, keyword, keyword);
     }
 
+
+    public List<DamageReport> searchDamageReports(String keyword){
+        String sql ="SELECT damage_report_id, damage_report_comment, damage_report_overdriven_km, employee_id " +
+                "FROM damage_report " +
+                "WHERE damage_report_id LIKE CONCAT('%',?,'%') " +
+                "OR damage_report.damage_report_comment LIKE CONCAT('%',?,'%') " +
+                "OR damage_report_overdriven_km LIKE CONCAT('%',?,'%') " +
+                "OR employee_id LIKE CONCAT('%',?,'%') " +
+                "ORDER BY damage_report_id";
+        RowMapper<DamageReport> rowMapper = new BeanPropertyRowMapper<>(DamageReport.class);
+        return template.query(sql, rowMapper, keyword, keyword, keyword, keyword);
+    }
+
+    public SearchResult searchAll(String keyword){
+        SearchResult searchResult = new SearchResult();
+        searchResult.setRentalContracts(searchRentalContracts(keyword));
+        searchResult.setCars(searchCars(keyword));
+        searchResult.setDamageReports(searchDamageReports(keyword));
+        return searchResult;
+    }
 }
