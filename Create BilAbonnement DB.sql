@@ -73,7 +73,7 @@ CREATE TABLE customer
   (
   damage_report_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
   damage_report_comment VARCHAR(1000) NULL,
-  damage_report_overdriven_km INT NULL,
+  damage_report_overdriven_km INT DEFAULT 0,
   employee_id INT DEFAULT NULL,
   FOREIGN KEY (employee_id) REFERENCES employee(employee_id)
   );
@@ -187,8 +187,7 @@ INSERT INTO car(vin_nr, equipment_level, base_price, vat, emission, model_id) VA
 ("MNBVCX7", 2, 32000, 8000.00, 4.8, 17),
 ("LKJHGF9", 1, 35000, 8750.00, 4.9, 18),
 ("QWERT12", 3, 38000, 9500.00, 5.1, 19),
-("ASDFGH3", 2, 40000, 10000.00, 5.5, 20),
-("ASDFSDA", 2, 44000, 12000.00, 5.5, 20);
+("ASDFGH3", 2, 40000, 10000.00, 5.5, 20);
 
 INSERT INTO employee(employee_name, employee_username, employee_password, employee_type_id) VALUES
 ("Bob", "Bob123", "password", 1),
@@ -216,7 +215,7 @@ INSERT INTO damage_on_report(damage_report_id, damage_type_id) VALUES
 (1,2);
 
 INSERT INTO model_image(model_image_url) VALUES
-("https://png.pngtree.com/png-clipart/20190604/original/pngtree-vector-car-png-image_1312227.jpg"); 
+("https://res.cloudinary.com/digital-interdan/image/upload/c_fit,e_trim:0,q_80,w_1280/v1/cars/Renault_Captur_Zen_GRAACASIOPEE.png"); 
 
 SET SQL_SAFE_UPDATES = 0;
 UPDATE model SET model_image_id = 1;
