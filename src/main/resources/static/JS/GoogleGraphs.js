@@ -25,8 +25,6 @@ function drawChart() {
 
     var columnchart_options = {
         title: "Status på Biler",
-        width: 600,
-        height: 400,
         bar: { groupWidth: "95%" },
         legend: { position: "none" },
         backgroundColor: 'whitesmoke'
