@@ -170,9 +170,9 @@ public class HomeController {
 
     @GetMapping("/search")
     public String search(@RequestParam("search_filter") String searchFilter, @RequestParam("search_value") String keyword, Model model) {
-        //List<SearchResult> results = service.searchForKeyword(searchFilter, keyword);
-        //model.addAttribute("cars", carList);
-        return "searchResults";
+        SearchResult results = service.searchForKeyword(searchFilter, keyword);
+        model.addAttribute("results", results);
+        return loginCheck("searchResults");
     }
     /*@GetMapping("/leasedCarSum")
     public String sumOfLeasedCars(Model model){

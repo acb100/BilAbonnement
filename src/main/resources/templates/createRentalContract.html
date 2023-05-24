@@ -16,8 +16,8 @@
     <nav id="sidenav">
         <img src="img/small_logo_transparent.png" alt="Logo" id="small_logo">
         <ul>
-            <li><a th:href="@{dashboard}" >Dashboard</a></li>
-            <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{createRentalContract}" style="background-color: #05242f">Registrer Lejekontrakt</a></li>
+            <li><a th:href="@{dashboard}" style="background-color: #05242f">Dashboard</a></li>
+            <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{createRentalContract}">Registrer Lejekontrakt</a></li>
             <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{viewRentalContracts}">Se Lejekontrakter</a></li>
             <li th:if="${session.employeeTypeId} =='2'"><a th:href="@{createDamageReport}">Lav Skadesrapport</a></li>
             <li th:if="${session.employeeTypeId} =='2'"><a th:href="@{viewRentalContracts}">Se Skadesrapporter</a></li>
@@ -35,10 +35,10 @@
                     <option value="model">Model</option>
                     <option value="brand">Brand</option>
                     <option value="skadesrapport">Skadesrapporter</option>
-                    <option value="customer">kunder</option>
-                    <option value="car">Bil</option>
+                    <option value="customer">Navn</option>
+                    <option value="car">Car</option>
                 </select>
-                <input type="text" placeholder="Search.." name="search">
+                <input type="text" placeholder="Search.." name="search_value">
                 <button type="submit"><i class="fa fa-search"></i></button>
             </form>
         </div>
