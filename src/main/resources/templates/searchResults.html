@@ -38,7 +38,7 @@
                     <option value="brand">Brand</option>
                     <option value="skadesrapport">Skadesrapporter</option>
                     <option value="customer">Navn</option>
-                    <option value="car">Car</option>
+                    <option value="car">Biler</option>
                 </select>
                 <input type="text" placeholder="Search.." name="search_value">
                 <button type="submit"><i class="fa fa-search"></i></button>
@@ -59,9 +59,11 @@
 <main>
     <h1>Search Results</h1>
 <div th:if="${results.getCars}">
+    <h3>Cars:</h3>
     <table>
         <thead>
         <tr>
+            <th>Billede</th>
             <th>Car ID</th>
             <th>VIN Number</th>
             <th>Equipment Level</th>
@@ -87,6 +89,7 @@
     </table>
 </div>
     <div th:if="${results.getRentalContracts}">
+        <h3>Rental Contracts:</h3>
         <table>
             <thead>
             <tr>
@@ -112,6 +115,56 @@
                 <td th:text="${contract.customer_id}"></td>
                 <td th:text="${contract.car_id}"></td>
                 <td th:text="${contract.damage_report_id}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:if="${results.getCustomers}">
+        <h3>Customers:</h3>
+        <table>
+            <thead>
+            <tr>
+                <th>Customer ID</th>
+                <th>Customer Name</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Driver License Number</th>
+                <th>CPR number</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="customer : ${results.getCustomers}">
+                <td th:text="${customer.customer_id}"></td>
+                <td th:text="${customer.customer_name}"></td>
+                <td th:text="${customer.address}"></td>
+                <td th:text="${customer.email}"></td>
+                <td th:text="${customer.phone_number}"></td>
+                <td th:text="${customer.driver_license_number}"></td>
+                <td th:text="${customer.cpr_number}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:if="${results.getDamageReports}">
+        <h3>Damage Reports:</h3>
+        <table>
+            <thead>
+            <tr>
+                <th>Damage Report ID</th>
+                <th>Damage Report Comment</th>
+                <th>Overdriven KM</th>
+                <th>Employee ID</th>
+                <th>Damage Type ID's</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="damageReport : ${results.getDamageReports}">
+                <td th:text="${damageReport.damage_report_id}"></td>
+                <td th:text="${damageReport.damage_report_comment}"></td>
+                <td th:text="${damageReport.damage_report_overdriven_km}"></td>
+                <td th:text="${damageReport.employee_id}"></td>
+                <td th:text="${damageReport.damage_type_ids}"></td>
             </tr>
             </tbody>
         </table>

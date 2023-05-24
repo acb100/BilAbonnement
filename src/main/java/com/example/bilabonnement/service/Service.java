@@ -92,11 +92,12 @@ public class Service {
     }
 
     public SearchResult searchForKeyword(String searchFilter, String keyword){
-
         SearchResult searchResults = new SearchResult();
         switch (searchFilter){
             //case "All" -> repo.searchAll(keyword);
-            case "Lejekontrakter" -> searchResults.setRentalContracts(repo.searchRentalContracts(keyword));
+            case "lejekontrakter" -> searchResults.setRentalContracts(repo.searchRentalContracts(keyword));
+            case "car" -> searchResults.setCars(repo.searchCars(keyword));
+
         }
         return searchResults;
     }

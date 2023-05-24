@@ -156,8 +156,45 @@ public class HomeRepository {
     }
 
     public List<RentalContract> searchRentalContracts(String keyword){
-        String sql ="SELECT * FROM rental_contract WHERE car_id LIKE '%?%'";
+        String sql ="SELECT rental_contract_id, start_date, end_date, subscription_type, employee_id, " +
+                "customer_id, car_id, damage_report_id, ongoing " +
+                "FROM rental_contract " +
+                "JOIN subscription USING(subscription_id) " +
+                "WHERE rental_contract_id LIKE CONCAT('%',?,'%') " +
+                "OR start_date LIKE CONCAT('%',?,'%') " +
+                "OR end_date LIKE CONCAT('%',?,'%') " +
+                "OR ongoing LIKE CONCAT('%',?,'%') " +
+                "OR employee_id LIKE CONCAT('%',?,'%') " +
+                "OR subscription.subscription_type LIKE CONCAT('%',?,'%') " +
+                "OR customer_id LIKE CONCAT('%',?,'%') " +
+                "OR car_id LIKE CONCAT('%',?,'%') " +
+                "OR damage_report_id LIKE CONCAT('%',?,'%') " +
+                "ORDER BY rental_contract_id";
         RowMapper<RentalContract> rowMapper = new BeanPropertyRowMapper<>(RentalContract.class);
-        return template.query(sql, rowMapper, keyword);
+        return template.query(sql, rowMapper, keyword, keyword, keyword, keyword, keyword, keyword, keyword, keyword, keyword);
     }
+
+    public List<Car> searchCars(String keyword){
+        String sql ="SELECT ongoing, car_id, vin_nr, equipment_level, base_price, vat, emission, " +
+                " model_name, brand_name, model_image_url " +
+                "FROM car " +
+                "LEFT JOIN rental_contract USING(car_id) " +
+                "JOIN model USING(model_id) " +
+                "JOIN brand USING(brand_id) " +
+                "LEFT JOIN model_image USING(model_image_id)" +
+                "WHERE car_id LIKE CONCAT('%',?,'%') " +
+                "OR car.vin_nr LIKE CONCAT('%',?,'%') " +
+                "OR equipment_level LIKE CONCAT('%',?,'%') " +
+                "OR ongoing LIKE CONCAT('%',?,'%') " +
+                "OR base_price LIKE CONCAT('%',?,'%') " +
+                "OR vat LIKE CONCAT('%',?,'%') " +
+                "OR emission LIKE CONCAT('%',?,'%') " +
+                "OR model.model_name LIKE CONCAT('%',?,'%') " +
+                "OR brand.brand_name LIKE CONCAT('%',?,'%') " +
+                "OR model_image.model_image_url LIKE CONCAT('%',?,'%') " +
+                "ORDER BY car_id";
+        RowMapper<Car> rowMapper = new BeanPropertyRowMapper<>(Car.class);
+        return template.query(sql, rowMapper, keyword, keyword, keyword, keyword, keyword, keyword, keyword, keyword, keyword, keyword);
+    }
+
 }
