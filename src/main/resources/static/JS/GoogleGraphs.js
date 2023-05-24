@@ -23,17 +23,18 @@ function drawChart() {
         2,
     ]);
 
-    var options = {
+    var columnchart_options = {
         title: "Status på Biler",
         width: 600,
         height: 400,
         bar: { groupWidth: "95%" },
         legend: { position: "none" },
+        backgroundColor: 'whitesmoke'
     };
-    var chart = new google.visualization.ColumnChart(
+    var columnchart = new google.visualization.ColumnChart(
         document.getElementById("columnchart_cars")
     );
-    chart.draw(view, options);
+    columnchart.draw(view, columnchart_options);
 
     var allCarsJson = document.getElementById('allCars').value;
     var allCars = JSON.parse(allCarsJson);
@@ -46,13 +47,14 @@ function drawChart() {
         carData.push([model, quantity]);
     });
 
-    var data = google.visualization.arrayToDataTable(carData);
+    var pieData = google.visualization.arrayToDataTable(carData);
 
-    var options = {
-        title: 'Car Models'
+    var piechart_options = {
+        title: 'Alle Bilmodeller',
+        backgroundColor: 'whitesmoke'
     };
 
-    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    var piechart = new google.visualization.PieChart(document.getElementById('piechart'));
 
-    chart.draw(data, options);
+    piechart.draw(pieData, piechart_options);
 }

@@ -60,6 +60,8 @@ public class HomeController {
         List<CarWithCount> allCars = service.getAllCarModels();
         ObjectMapper objectMapper = new ObjectMapper();
         String allCarsJson = objectMapper.writeValueAsString(allCars);
+
+        model.addAttribute("allCurrentDayCars", service.fetchAllCurrentDayCars());
         model.addAttribute("usedCars", service.getAllUsedCars());
         model.addAttribute("unusedCars", service.getAllUnusedCars());
         model.addAttribute("usedCarRows", service.getAllUsedCarRows());

@@ -90,4 +90,8 @@ public class Service {
     public int fetchSumOfLeasedCars(){
         return repo.fetchSumOfLeasedCars();
     }
+
+    public List<CurrentDayCars> fetchAllCurrentDayCars() {
+        return repo.getAllCurrentDayContractCars();
+    }
 }
