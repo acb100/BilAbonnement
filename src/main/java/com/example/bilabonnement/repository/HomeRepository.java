@@ -217,4 +217,17 @@ public class HomeRepository {
         searchResult.setDamageReports(searchDamageReports(keyword));
         return searchResult;
     }
+    public void addAdvanceAgreement(AdvanceAgreement advanceAgreement){
+        String sql = "INSERT INTO advance_agreement (buyer_id, car_id, advance_agreement_ price, advance_agreement_text)" +
+                " VALUES(?,?,?,?,?)";
+        template.update(sql, advanceAgreement.getBuyer_id(),
+                advanceAgreement.getCar_id(), advanceAgreement.getAdvance_agreement_price(),
+                advanceAgreement.getAdvance_agreement_text());
+    }
+
+    public List<Buyer> getAllBuyers() {
+        String sql = "SELECT * FROM buyer";
+        RowMapper<Buyer> rowMapper = new BeanPropertyRowMapper<>(Buyer.class);
+        return template.query(sql, rowMapper);
+    }
 }
