@@ -5,7 +5,7 @@
     <title>Create Rental Contract</title>
     <link rel="icon" type="image/x-icon" href="/img/favicon.png">
     <link rel="stylesheet" type="text/css" href="/styles/main.css">
-    <link rel="stylesheet" type="text/css" href="/styles/createRentalContract.css">
+    <link rel="stylesheet" type="text/css" href="/styles/creationForm.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
@@ -17,8 +17,8 @@
     <nav id="sidenav">
         <img src="img/small_logo_transparent.png" alt="Logo" id="small_logo">
         <ul>
-            <li><a th:href="@{dashboard}" style="background-color: #05242f">Dashboard</a></li>
-            <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{createRentalContract}">Registrer Lejekontrakt</a></li>
+            <li><a th:href="@{dashboard}" >Dashboard</a></li>
+            <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{createRentalContract}" style="background-color: #05242f">Registrer Lejekontrakt</a></li>
             <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{viewRentalContracts}">Se Lejekontrakter</a></li>
             <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{createAdvanceAgreement}">Lav forhåndsaftale</a></li>
             <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{viewAdvanceAgreements}">Se forhåndsaftale</a></li>

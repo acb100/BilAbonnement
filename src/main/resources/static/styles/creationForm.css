@@ -14,8 +14,13 @@ main{
     padding: 20px;
 }
 
-input, select{
+input, select, .comment_area{
     border: 2px solid #093a4e;
+}
+
+input[type=checkbox]{
+    outline: 2px solid #093a4e;
+    cursor: pointer;
 }
 
 .create_contract_btn{
