@@ -191,4 +191,11 @@ public class HomeController {
         service.addAdvanceAgreement(advanceAgreement);
         return loginCheck("createAdvanceAgreement");
     }
+    @GetMapping("/viewAdvanceAgreements")
+    public String viewAdvanceAgreements(Model model){
+        model.addAttribute("cars", service.getAllCars());
+        model.addAttribute("advanceAgreements", service.getAllAdvanceAgreements());
+        model.addAttribute("buyers", service.getAllBuyers());
+        return loginCheck("viewAdvanceAgreements");
+    }
 }

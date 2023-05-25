@@ -20,6 +20,7 @@
       <li><a th:href="@{dashboard}" style="background-color: #05242f">Dashboard</a></li>
       <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{createRentalContract}">Registrer Lejekontrakt</a></li>
       <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{viewRentalContracts}">Se Lejekontrakter</a></li>
+      <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{createAdvanceAgreement}">Lav forhåndsaftale</a></li>
       <li th:if="${session.employeeTypeId} =='2'"><a th:href="@{createDamageReport}">Lav Skadesrapport</a></li>
       <li th:if="${session.employeeTypeId} =='2'"><a th:href="@{viewRentalContracts}">Se Skadesrapporter</a></li>
       <li th:if="${session.employeeTypeId} =='3'"><a th:href="@{carOverview}">Overblik biler</a></li>
@@ -69,10 +70,10 @@
         <option selected value=""></option>
         <option th:each="car: ${cars}" th:value="${car.car_id}"><span th:text="${car.model_name}"></span></option>
       </select> <br><br>
-      <label>Aftalt pris</label>
-      <input type="text" name="advance_agreement_price">
-      <label>Kommentar</label>
-      <input type="text" name="advance_agreement_text">
+      <label>Aftalt pris</label><br>
+      <input type="text" name="advance_agreement_price"><p>DKK</p><br>
+      <label>Kommentar</label><br>
+      <textarea name="advance_agreement_text" rows="4" cols="50" class="comment_area"></textarea> <br><br>
       <input type="submit" value="Create" class="create_contract_btn">
 
     </form>

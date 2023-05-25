@@ -109,4 +109,7 @@ public class Service {
     public List<Buyer> getAllBuyers() {
         return repo.getAllBuyers();
     }
+    public List<AdvanceAgreement> getAllAdvanceAgreements(){
+        return repo.getAllAdvanceAgreements();
+    }
 }

@@ -58,29 +58,19 @@
     <table>
         <thead>
         <tr>
-            <th>Billede</th>
-            <th>Vognnummer</th>
-            <th>Stelnummer</th>
-            <th>Mærke</th>
+            <th>Forhåndsaftale nr.</th>
+            <th>Køber</th>
+            <th>Bil</th>
             <th>Model</th>
-            <th>Udstyrsniveau</th>
-            <th>Udledning</th>
-            <th>Pris eksl. skatter og afgifter</th>
-            <th>Skatter og afgifter</th>
-            <th>Status</th>
+            <th>Aftalt pris</th>
         </tr>
         </thead>
-        <tr th:each="cars: ${carList}">
-            <td><img th:src="${cars.model_image_url}" id="car_image"></td>
+        <tr th:each="agreements: ${advanceAgreements}">
+            <td th:text="${agreements.advance_agreement_id}"></td>
+            <td th:text="${buyers.getBuyer_name}"></td>
             <td th:text="${cars.car_id}"></td>
-            <td th:text="${cars.vin_nr}"></td>
-            <td th:text="${cars.brand_name}"></td>
             <td th:text="${cars.model_name}"></td>
-            <td th:text="${cars.equipment_level}"></td>
-            <td th:text="${cars.emission}"></td>
-            <td th:text="${cars.base_price}"></td>
-            <td th:text="${cars.vat}"></td>
-            <td th:text="${cars.ongoing} ? 'Aktiv' : 'Inaktiv'"></td>
+            <td th:text="${agreements.advance_agreement_price}"></td>
         </tr>
     </table>
 </main>
