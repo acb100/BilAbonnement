@@ -106,4 +106,14 @@ public class Service {
         }
         return searchResults;
     }
+    public void addAdvanceAgreement(AdvanceAgreement advanceAgreement){
+        repo.addAdvanceAgreement(advanceAgreement);
+    }
+
+    public List<Buyer> getAllBuyers() {
+        return repo.getAllBuyers();
+    }
+    public List<AdvanceAgreement> getAllAdvanceAgreements(){
+        return repo.getAllAdvanceAgreements();
+    }
 }

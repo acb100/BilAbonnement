@@ -146,7 +146,9 @@ public class HomeRepository {
     }
 
     public RentalContract findRentalContractById(int rentalContractId) {
-        String sql = "SELECT * FROM rental_contract WHERE rental_contract_id = ? OR start_date = ? OR costumer_id = ?";
+        String sql = "SELECT * FROM rental_contract" +
+                " LEFT JOIN costumer USING(costumer_id)" +
+                " WHERE rental_contract_id = ? OR start_date = ? OR costumer_id = ?";
         RowMapper<RentalContract> rowMapper = new BeanPropertyRowMapper<>(RentalContract.class);
         return template.queryForObject(sql, rowMapper, rentalContractId);
     }
@@ -227,5 +229,28 @@ public class HomeRepository {
         searchResult.setCars(searchCars(keyword));
         searchResult.setDamageReports(searchDamageReports(keyword));
         return searchResult;
+    }
+    public void addAdvanceAgreement(AdvanceAgreement advanceAgreement){
+        String sql = "INSERT INTO advance_agreement (buyer_id, car_id, advance_agreement_price, advance_agreement_text)" +
+                " VALUES(?,?,?,?,?)";
+        template.update(sql, advanceAgreement.getBuyer_id(),
+                advanceAgreement.getCar_id(), advanceAgreement.getAdvance_agreement_price(),
+                advanceAgreement.getAdvance_agreement_text());
+    }
+
+    public List<Buyer> getAllBuyers() {
+        String sql = "SELECT * FROM buyer";
+        RowMapper<Buyer> rowMapper = new BeanPropertyRowMapper<>(Buyer.class);
+        return template.query(sql, rowMapper);
+    }
+    public List<AdvanceAgreement> getAllAdvanceAgreements(){
+        String sql = "SELECT advance_agreement_id, buyer_id, car_id, advance_agreement_price, advance_agreement_text," +
+                "buyer_name, model_name, model_id" +
+                " FROM advance_agreement" +
+                " JOIN car USING(car_id)" +
+                " JOIN buyer USING(buyer_id)" +
+                " JOIN model USING(model_id)";
+        RowMapper<AdvanceAgreement> rowMapper = new BeanPropertyRowMapper<>(AdvanceAgreement.class);
+        return template.query(sql, rowMapper);
     }
 }

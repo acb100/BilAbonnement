@@ -176,9 +176,28 @@ public class HomeController {
         model.addAttribute("results", results);
         return loginCheck("searchResults");
     }
-    /*@GetMapping("/leasedCarSum")
+
+    @GetMapping("/leasedCarSum")
     public String sumOfLeasedCars(Model model){
         model.addAttribute("carSum", service.fetchSumOfLeasedCars());
         return loginCheck("dashboard");
-    }*/
+    }
+    @GetMapping("/createAdvanceAgreement")
+    public String createAdvanceAgreement(Model model){
+        model.addAttribute("cars", service.getAllCars());
+        model.addAttribute("buyers", service.getAllBuyers());
+        return loginCheck("createAdvanceAgreement");
+    }
+    @PostMapping("/createAdvanceAgreement")
+    public String createAdvanceAgreement(@ModelAttribute AdvanceAgreement advanceAgreement){
+        service.addAdvanceAgreement(advanceAgreement);
+        return loginCheck("createAdvanceAgreement");
+    }
+    @GetMapping("/viewAdvanceAgreements")
+    public String viewAdvanceAgreements(Model model){
+        model.addAttribute("cars", service.getAllCars());
+        model.addAttribute("advanceAgreements", service.getAllAdvanceAgreements());
+        model.addAttribute("buyers", service.getAllBuyers());
+        return loginCheck("viewAdvanceAgreements");
+    }
 }
