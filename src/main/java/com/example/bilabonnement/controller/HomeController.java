@@ -166,9 +166,26 @@ public class HomeController {
     public String fetchAllCars(Model model){
         model.addAttribute("carList", service.fetchAllCars());
         return loginCheck("carOverviewPage");
-
     }
 
+    @PostMapping("/updateStatus")
+    public String updateStatus(@ModelAttribute Car car) {
+        System.out.println("Vin_nr: " + car.getVin_nr());
+        System.out.println("Equipment: " + car.getEquipment_level());
+        System.out.println("base_price: " + car.getBase_price());
+        System.out.println("vat: " + car.getVat());
+        System.out.println("emission: " + car.getEmission());
+        System.out.println("model_id: " + car.getModel_id());
+
+            service.addCar(car);
+            return "redirect:/carOverview";
+    }
+
+    @PostMapping("/deleteCar")
+    public String deleteCar(@RequestParam("carId") int car_id) {
+        service.deleteCar(car_id);
+        return "redirect:/carOverview";
+    }
 
     @GetMapping("/search")
     public String search(@RequestParam("search_filter") String searchFilter, @RequestParam("search_value") String keyword, Model model) {

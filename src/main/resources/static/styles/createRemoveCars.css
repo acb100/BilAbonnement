@@ -1,0 +1,45 @@
+.input_carCreate{
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: fit-content;
+}
+
+.button_carCreate{
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: fit-content;
+}
+
+.select_carCreate{
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: fit-content;
+}
+
+.button_carRemove {
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: fit-content;
+    background-color: #ff0000;
+    color: #fff;
+}

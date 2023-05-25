@@ -1,6 +1,5 @@
 package com.example.bilabonnement.service;
 
-
 import com.example.bilabonnement.model.*;
 import com.example.bilabonnement.repository.HomeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +53,14 @@ public class Service {
             carsWithCount.add(carWithCount);
         }
         return carsWithCount;
+    }
+
+    public void addCar(Car car){
+        repo.addCar(car);
+    }
+
+    public Boolean deleteCar(int carId){
+        return repo.deleteCar(carId);
     }
 
     public int getAllUnusedCarRows(){

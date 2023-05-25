@@ -26,6 +26,19 @@ public class HomeRepository {
 
     }
 
+    public void addCar(Car car) {
+        String sql = "INSERT INTO car (vin_nr, equipment_level, base_price, vat," +
+                "emission, model_id) VALUES(?,?,?,?,?,?)";
+        System.out.println("Vin_nr: " + car.getVin_nr());
+        template.update(sql, car.getVin_nr(), car.getEquipment_level(), car.getBase_price(),
+                car.getVat(), car.getEmission(), car.getModel_id());
+    }
+
+    public Boolean deleteCar(int car_id) {
+        String sql = "DELETE FROM car WHERE car_id = ?";
+        return template.update(sql, car_id) > 0;
+    }
+
     public int addDamageReport() {
         String sql = "INSERT INTO damage_report(damage_report_comment) VALUES(?)";
         template.update(sql, "No content");
