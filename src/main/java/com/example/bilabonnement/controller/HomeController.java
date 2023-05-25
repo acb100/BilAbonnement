@@ -198,4 +198,13 @@ public class HomeController {
         model.addAttribute("buyers", service.getAllBuyers());
         return loginCheck("viewAdvanceAgreements");
     }
+    @GetMapping("/deleteAdvanceAgreement/{agreementId}")
+    public String deleteAdvanceAgreement(@PathVariable("agreementId") int agreementId){
+        boolean deleted = service.deleteAdvanceAgreement(agreementId);
+        if(deleted){
+            return loginCheck("viewAdvanceAgreements");
+        } else {
+            return loginCheck("viewAdvanceAgreements");
+        }
+    }
 }

@@ -242,4 +242,8 @@ public class HomeRepository {
         RowMapper<AdvanceAgreement> rowMapper = new BeanPropertyRowMapper<>(AdvanceAgreement.class);
         return template.query(sql, rowMapper);
     }
+    public Boolean deleteAdvanceAgreement(int advanceAgreementId){
+        String sql = "DELETE FROM advance_agreement WHERE advance_agreement_id = ?";
+        return template.update(sql, advanceAgreementId) > 0;
+    }
 }

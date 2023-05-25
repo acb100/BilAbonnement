@@ -71,6 +71,11 @@
             <td th:text="${cars.car_id}"></td>
             <td th:text="${cars.model_name}"></td>
             <td th:text="${agreements.advance_agreement_price}"></td>
+            <td>
+                <a th:href="@{'/deleteAdvanceAgreement/' + ${agreements.advance_agreement_id}}">
+                    <button>Slet aftale</button>
+                </a>
+            </td>
         </tr>
     </table>
 </main>
