@@ -73,6 +73,7 @@
                 <th>Emission</th>
                 <th>Model Name</th>
                 <th>Brand Name</th>
+                <th>Ongoing</th>
             </tr>
             </thead>
             <tbody>
@@ -85,6 +86,7 @@
                 <td th:text="${car.emission}"></td>
                 <td th:text="${car.model_name}"></td>
                 <td th:text="${car.brand_name}"></td>
+                <td th:text="${car.ongoing} ? 'Aktiv' : 'Inaktiv'"></td>
             </tr>
             </tbody>
         </table>

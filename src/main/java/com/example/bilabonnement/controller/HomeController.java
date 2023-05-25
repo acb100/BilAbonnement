@@ -79,7 +79,7 @@ public class HomeController {
     @GetMapping("/createRentalContract")
     public String createRentalContract(Model model) {
         model.addAttribute("customers", service.getAllCustomers());
-        model.addAttribute("cars", service.getAllCars());
+        model.addAttribute("cars", service.getAllUnusedCars());
         return loginCheck("createRentalContract");
     }
 
@@ -142,7 +142,7 @@ public class HomeController {
     }
     @GetMapping("/carOverview")
     public String fetchAllCars(Model model){
-        model.addAttribute("carList", service.getAllCars());
+        model.addAttribute("carList", service.orderCarsByOngoing());
         return loginCheck("carOverviewPage");
     }
 

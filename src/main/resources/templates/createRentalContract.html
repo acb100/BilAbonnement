@@ -78,7 +78,7 @@
             <label>Choose Car</label><br>
             <select name="car_id" id="car_choice">
                 <option selected value=""></option>
-                <option th:each="car: ${cars}" th:value="${car.car_id}"><span th:text="${car.model_name}"></span></option>
+                <option th:each="car: ${cars}"  th:value="${car.car_id}"><span th:text="${car.model_name}"></span></option>
             </select> <br><br>
             <input type="text" th:value="${session.employeeId}" name="employee_id" style="display:none">
             <input type="submit" value="Create" class="create_contract_btn">
