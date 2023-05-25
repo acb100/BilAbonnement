@@ -116,4 +116,7 @@ public class Service {
     public List<AdvanceAgreement> getAllAdvanceAgreements(){
         return repo.getAllAdvanceAgreements();
     }
+    public Boolean deleteAdvanceAgreement(int advanceAgreementId){
+        return repo.deleteAdvanceAgreement(advanceAgreementId);
+    }
 }

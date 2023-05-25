@@ -21,6 +21,7 @@
             <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{createRentalContract}">Registrer Lejekontrakt</a></li>
             <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{viewRentalContracts}">Se Lejekontrakter</a></li>
             <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{createAdvanceAgreement}">Lav forhåndsaftale</a></li>
+            <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{viewAdvanceAgreements}">Se forhåndsaftale</a></li>
             <li th:if="${session.employeeTypeId} =='2'"><a th:href="@{createDamageReport}">Lav Skadesrapport</a></li>
             <li th:if="${session.employeeTypeId} =='2'"><a th:href="@{viewRentalContracts}">Se Skadesrapporter</a></li>
             <li th:if="${session.employeeTypeId} =='3'"><a th:href="@{carOverview}">Overblik biler</a></li>
@@ -71,6 +72,11 @@
             <td th:text="${cars.car_id}"></td>
             <td th:text="${cars.model_name}"></td>
             <td th:text="${agreements.advance_agreement_price}"></td>
+            <td>
+                <a th:href="@{'/deleteAdvanceAgreement/' + ${agreements.advance_agreement_id}}">
+                    <button>Slet aftale</button>
+                </a>
+            </td>
         </tr>
     </table>
 </main>
