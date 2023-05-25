@@ -37,8 +37,14 @@ public class Service {
     }
 
     public List<Car> getAllCars(){
-        return repo.getAllCars();
+        return repo.fetchAllCars();
     }
+    public List<Car> orderCarsByOngoing(){
+        List<Car> data = getAllCars();
+        data.sort(Comparator.comparing(Car::getOngoing, Comparator.nullsLast(Boolean::compareTo)));
+        return data;
+    }
+
 
     public List<Car> getAllUsedCars() { return repo.getAllUsedCars(); }
 
@@ -74,25 +80,13 @@ public class Service {
     public List<RentalContract> getAllRentalContracts(){
         return repo.getAllRentalContracts();
     }
-
-    public List<RentalContract> fetchAllRentalContractsForEmployee(int employeeId){
-        return repo.fetchAllRentalContractsForEmployee(employeeId);
-    }
     public Boolean deleteRentalContract(int rentalContractId){
         return repo.deleteRentalContract(rentalContractId);
-    }
-    public RentalContract findRentalContractById(int rentalContractId){
-        return repo.findRentalContractById(rentalContractId);
     }
 
     public void updateDamageReport(DamageReport damageReport, int rentalContractId) {
         repo.updateDamageReport(damageReport, rentalContractId);
         repo.addDamageOnReport(damageReport, rentalContractId);
-    }
-    public List<Car> fetchAllCars(){
-        List<Car> data = repo.fetchAllCars();
-        data.sort(Comparator.comparing(Car::getOngoing, Comparator.nullsLast(Boolean::compareTo)));
-        return data;
     }
     public int fetchSumOfLeasedCars(){
         return repo.fetchSumOfLeasedCars();

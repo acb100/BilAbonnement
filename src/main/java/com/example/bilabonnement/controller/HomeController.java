@@ -96,32 +96,10 @@ public class HomeController {
 
     }
 
-    @GetMapping("/viewRentalContracts/{employeeId}")
-    public String viewRentalContractsByEmployeeId(@PathVariable("employeeId") int employeeId, Model model, HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        List<RentalContract> contractList = service.fetchAllRentalContractsForEmployee(employeeId);
-        String id = (String) session.getAttribute("employeeId");
-        model.addAttribute("contractlist", contractList);
-        model.addAttribute("employeeId", id);
-        return "contractOverview";
-    }
-
     @GetMapping("/deleteRentalContract/{contractId}")
     public String deleteRentalContract(@PathVariable("contractId") int contractId) {
         boolean deleted = service.deleteRentalContract(contractId);
-        if (deleted) {
-            return "redirect:/viewRentalContracts";
-        } else {
-            return "redirect:/viewRentalContracts";
-        }
-    }
-
-    //TODO bliver ikke brugt lige nu, men kan bruges til at finde en enkelt contract gennem ID
-    @GetMapping("/viewRentalContract/{contractId}")
-    public String viewRentalContract(@PathVariable("contractId") int contractId, HttpServletRequest request, Model model) {
-        HttpSession session = request.getSession();
-        model.addAttribute("contract", service.findRentalContractById(contractId));
-        return "viewContractPage";
+        return "redirect:/viewRentalContracts";
     }
 
     @GetMapping("/createDamageReport")
@@ -164,7 +142,7 @@ public class HomeController {
     }
     @GetMapping("/carOverview")
     public String fetchAllCars(Model model){
-        model.addAttribute("carList", service.fetchAllCars());
+        model.addAttribute("carList", service.getAllCars());
         return loginCheck("carOverviewPage");
     }
 
@@ -220,10 +198,6 @@ public class HomeController {
     @GetMapping("/deleteAdvanceAgreement/{agreementId}")
     public String deleteAdvanceAgreement(@PathVariable("agreementId") int agreementId){
         boolean deleted = service.deleteAdvanceAgreement(agreementId);
-        if(deleted){
-            return loginCheck("viewAdvanceAgreements");
-        } else {
-            return loginCheck("viewAdvanceAgreements");
-        }
+        return loginCheck("viewAdvanceAgreements");
     }
 }

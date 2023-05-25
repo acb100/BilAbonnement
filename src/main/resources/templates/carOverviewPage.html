@@ -99,7 +99,7 @@
                 <td><button type="submit" name="submit" class="button_carCreate">Tilføj Bil</button></td>
             </tr>
             <tr th:each="cars: ${carList}">
-                <td><img th:src="${cars.model_image_url}" id="car_image"></td>
+                <td><img th:src="${cars.model_image_url}" id="car_image" alt="Car_image"></td>
                 <td th:text="${cars.car_id}"></td>
                 <td th:text="${cars.vin_nr}"></td>
                 <td th:text="${cars.brand_name}"></td>
