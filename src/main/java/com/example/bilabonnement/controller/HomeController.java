@@ -7,6 +7,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -166,7 +168,12 @@ public class HomeController {
     }
 
     @GetMapping("/search")
-    public String search(@RequestParam("search_filter") String searchFilter, @RequestParam("search_value") String keyword, Model model) {
+    public String search(@RequestParam("search_filter") String searchFilter,
+                         @RequestParam("search_value") String keyword, Model model ) {
+        if (keyword.isBlank()){
+            keyword  = "   ";
+            model.addAttribute("search_error", true);
+        }
         SearchResult results = service.searchForKeyword(searchFilter, keyword);
         model.addAttribute("results", results);
         return loginCheck("searchResults");

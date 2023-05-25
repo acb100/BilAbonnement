@@ -59,7 +59,8 @@
     </div>
 </header>
 <main>
-    <h1>Search Results</h1><br>
+    <h1>Search Results</h1>
+    <p th:if="${search_error}" style="color: red; font-weight: bold">No Search Value</p><br>
     <div th:if="${results.getCars}">
         <h3>Cars:</h3>
         <table>
