@@ -37,7 +37,7 @@ public class HomeController {
     }
 
     @GetMapping("/myProfile")
-    public String myProfile(){
+    public String myProfile() {
         return "myProfile";
     }
 
@@ -71,7 +71,7 @@ public class HomeController {
                 model.addAttribute("carSum", service.fetchSumOfLeasedCars());
             }
 
-        } catch (NullPointerException ignored){
+        } catch (NullPointerException ignored) {
 
         }
         model.addAttribute("allCars", allCarsJson);
@@ -100,7 +100,7 @@ public class HomeController {
 
     @GetMapping("/deleteRentalContract/{contractId}")
     public String deleteRentalContract(@PathVariable("contractId") int contractId) {
-        boolean deleted = service.deleteRentalContract(contractId);
+        service.deleteRentalContract(contractId);
         return "redirect:/viewRentalContracts";
     }
 
@@ -113,7 +113,7 @@ public class HomeController {
 
     @PostMapping("/createDamageReport")
     public String createDamageReport(@ModelAttribute DamageReport damageReport,
-                                     @RequestParam(name = "rental_contract_id") int rentalContractId){
+                                     @RequestParam(name = "rental_contract_id") int rentalContractId) {
         System.out.println(Arrays.toString(damageReport.getDamage_type_ids()));
         service.updateDamageReport(damageReport, rentalContractId);
         return loginCheck("dashboard");
@@ -142,8 +142,9 @@ public class HomeController {
         session.invalidate();
         return "redirect:/";
     }
+
     @GetMapping("/carOverview")
-    public String fetchAllCars(Model model){
+    public String fetchAllCars(Model model) {
         model.addAttribute("carList", service.orderCarsByOngoing());
         return loginCheck("carOverviewPage");
     }
@@ -193,13 +194,11 @@ public class HomeController {
     @PostMapping("/createAdvanceAgreement")
     public String createAdvanceAgreement(@ModelAttribute AdvanceAgreement advanceAgreement){
         service.addAdvanceAgreement(advanceAgreement);
-        return loginCheck("createAdvanceAgreement");
+        return "redirect:/dashboard";
     }
     @GetMapping("/viewAdvanceAgreements")
     public String viewAdvanceAgreements(Model model){
-        model.addAttribute("cars", service.getAllCars());
         model.addAttribute("advanceAgreements", service.getAllAdvanceAgreements());
-        model.addAttribute("buyers", service.getAllBuyers());
         return loginCheck("viewAdvanceAgreements");
     }
     @GetMapping("/deleteAdvanceAgreement/{agreementId}")

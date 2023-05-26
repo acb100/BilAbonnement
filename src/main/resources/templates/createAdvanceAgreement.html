@@ -64,7 +64,7 @@
       <label>Vælg køber</label><br>
       <select name="buyer_id" id="customer_choice">
         <option selected value=""></option>
-        <option th:each="buyer: ${buyers}" th:value="${buyer.getCustomer_id}"><span th:text="${buyer.getBuyer_name}"></span></option>
+        <option th:each="buyer: ${buyers}" th:value="${buyer.getBuyer_id}"><span th:text="${buyer.getBuyer_name}"></span></option>
       </select> <br> <br>
       <label>Vælg bil</label><br>
       <select name="car_id" id="car_choice">

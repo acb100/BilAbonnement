@@ -68,13 +68,13 @@
         </thead>
         <tr th:each="agreements: ${advanceAgreements}">
             <td th:text="${agreements.advance_agreement_id}"></td>
-            <td th:text="${buyers.getBuyer_name}"></td>
-            <td th:text="${cars.car_id}"></td>
-            <td th:text="${cars.model_name}"></td>
+            <td th:text="${agreements.getBuyer_name}"></td>
+            <td th:text="${agreements.car_id}"></td>
+            <td th:text="${agreements.model_name}"></td>
             <td th:text="${agreements.advance_agreement_price}"></td>
             <td>
                 <a th:href="@{'/deleteAdvanceAgreement/' + ${agreements.advance_agreement_id}}">
-                    <button>Slet aftale</button>
+                    <button class="delete_btn">Slet aftale</button>
                 </a>
             </td>
         </tr>

@@ -24,3 +24,16 @@ td{
 tbody tr:nth-child(odd) {
     background-color: #d7d7d7;
 }
+
+.delete_btn{
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: fit-content;
+    background-color: #ff0000;
+    color: #fff;
+}
