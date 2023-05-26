@@ -1,8 +1,6 @@
 DROP DATABASE IF EXISTS bilabonnement;
 CREATE DATABASE bilabonnement;
-
 USE bilabonnement;
-
 CREATE TABLE employee_type
 (
   employee_type_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
@@ -43,7 +41,8 @@ CREATE TABLE employee
   model_name VARCHAR(45) NULL,
   model_image_id INT NULL,
   brand_id INT NOT NULL,
-  FOREIGN KEY (brand_id) REFERENCES brand(brand_id)
+  FOREIGN KEY (brand_id) REFERENCES brand(brand_id),
+  FOREIGN KEY (model_image_id) REFERENCES model_image(model_image_id)
   );
   
   CREATE TABLE car 
@@ -110,6 +109,21 @@ CREATE TABLE customer
   FOREIGN KEY (customer_id) REFERENCES customer(customer_id),
   FOREIGN KEY (car_id) REFERENCES car(car_id),
   FOREIGN KEY (damage_report_id) REFERENCES damage_report(damage_report_id)
+  );
+  CREATE TABLE buyer
+  (
+  buyer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
+  buyer_name VARCHAR(255)
+  );
+  CREATE TABLE advance_agreements
+  (
+  advance_agreement_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
+  buyer_id INT NOT NULL,
+  car_id INT NOT NULL,
+  advance_agreement_price DOUBLE NOT NULL,
+  advance_agreement_text VARCHAR(255),
+  FOREIGN KEY (buyer_id) REFERENCES buyer(buyer_id),
+  FOREIGN KEY (car_id) REFERENCES car(car_id)
   );
   
   INSERT INTO subscription(subscription_type) VALUES
@@ -220,4 +234,3 @@ INSERT INTO model_image(model_image_url) VALUES
 SET SQL_SAFE_UPDATES = 0;
 UPDATE model SET model_image_id = 1;
 SET SQL_SAFE_UPDATES = 1;
- 
