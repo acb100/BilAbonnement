@@ -24,9 +24,6 @@ import java.util.List;
 
 @Controller
 public class HomeController {
-    //TODO refresh function for dashboard
-    //TODO discuss renaming header css to main
-    //TODO review damage report reference
     //TODO ADM user
     @Autowired
     Service service;
@@ -38,7 +35,7 @@ public class HomeController {
 
     @GetMapping("/myProfile")
     public String myProfile() {
-        return "myProfile";
+        return loginCheck("myProfile");
     }
 
     @PostMapping("/")
