@@ -108,8 +108,8 @@
             </table>
         </div>
     </div>
-    <div>
-        <span th:text="${carSum}"></span>
+    <div th:if="${showCarSum}">
+        <p>Sum af udlejede biler:  <span th:text="${carSum}"></span> DKK</p>
     </div>
 </main>
 <footer>
