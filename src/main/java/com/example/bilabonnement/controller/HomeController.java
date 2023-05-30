@@ -65,7 +65,7 @@ public class HomeController {
         model.addAttribute("unusedCarRows", service.getAllUnusedCarRows());
         try {
             if (session.getAttribute("employeeTypeId").equals(3)) {
-                model.addAttribute("showCarSum", "true");
+                model.addAttribute("showCarSum", true);
                 model.addAttribute("carSum", service.fetchSumOfLeasedCars());
             }
 
