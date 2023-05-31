@@ -17,9 +17,13 @@ th{
     border: 1px solid black;
     padding: 7px;
 }
-td{
+td {
     border: 1px solid black;
+    white-space: nowrap;
+    overflow: hidden; /* Hide any overflowing content */
+    text-overflow: ellipsis; /* Add an ellipsis (...) to indicate truncated content */
 }
+
 
 tbody tr:nth-child(odd) {
     background-color: #d7d7d7;

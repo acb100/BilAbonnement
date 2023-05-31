@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Rental Contracts</title>
+    <title>Lejekontrakter</title>
     <link rel="icon" type="image/x-icon" href="/img/favicon.png">
     <link rel="stylesheet" type="text/css" href="/styles/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,7 +25,7 @@
             <li th:if="${session.employeeTypeId} =='2'"><a th:href="@{createDamageReport}">Lav Skadesrapport</a></li>
             <li th:if="${session.employeeTypeId} =='2'"><a th:href="@{viewRentalContracts}">Se Skadesrapporter</a></li>
             <li th:if="${session.employeeTypeId} =='3'"><a th:href="@{carOverview}">Overblik biler</a></li>
-            <li th:if="${session.employeeTypeId} =='3'"><a th:href="@{viewRentalContracts}">Registrer biler</a></li>
+            <li th:if="${session.employeeTypeId} =='3'"><a th:href="@{viewRentalContracts}">Se Lejekontrakter</a></li>
             <li><a th:href="@{/logout}">Logout</a></li>
         </ul>
     </nav>
@@ -33,7 +33,7 @@
         <div class="search-container">
             <form action="/search">
                 <select name="search_filter" id="search_filter">
-                    <option selected value="all">All</option>
+                    <option selected value="all">Alle</option>
                     <option value="lejekontrakter">Lejekontrakter</option>
                     <option value="skadesrapport">Skadesrapporter</option>
                     <option value="customer">Navn</option>
@@ -48,7 +48,7 @@
             <div class="dropdown">
                 <img src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png" alt="Profile pic" id="profile_pic">
                 <div class="dropdown-content">
-                    <a th:href="@{myProfile}">Profile</a>
+                    <a th:href="@{myProfile}">Profil</a>
                     <a th:href="@{logout}">Logout</a>
                 </div>
             </div>
@@ -60,14 +60,14 @@
         <thead>
         <tr>
             <th>ID</th>
-            <th>Start date</th>
-            <th>End date</th>
-            <th>Active</th>
-            <th>Employee ID</th>
-            <th>Subscription ID</th>
-            <th>Customer ID</th>
-            <th>Car ID</th>
-            <th>Damage report</th>
+            <th>Start Dato</th>
+            <th>Slut Dato</th>
+            <th>Aktiv</th>
+            <th>Medarbejder ID</th>
+            <th>Abonnement ID</th>
+            <th>Kunde ID</th>
+            <th>Bil ID</th>
+            <th>Skadesrapport</th>
         </tr>
         </thead>
         <tbody>
@@ -83,7 +83,7 @@
             <td th:text="${contract.damage_report_id}"></td>
             <td>
                 <a th:href="@{'/deleteRentalContract/' + ${contract.rental_contract_id}}">
-                    <button class="delete_btn">Delete contract</button>
+                    <button class="delete_btn">Slet Lejekontrakt</button>
                 </a>
             </td>
         </tr>

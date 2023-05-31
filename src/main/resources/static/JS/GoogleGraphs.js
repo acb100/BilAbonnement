@@ -6,8 +6,8 @@ function drawChart() {
     var usedCarRows = parseInt(document.getElementById('usedCarRows').value);
     var data = google.visualization.arrayToDataTable([
         ["Element", "Mængde", { role: "style" }],
-        ["Biler på Lager", unusedCarRows, "gold"],
-        ["Brugte Biler", usedCarRows, "silver"],
+        ["Biler på Lager", unusedCarRows, "#1892C3"],
+        ["Brugte Biler", usedCarRows, "#0B445B"],
     ]);
 
     var view = new google.visualization.DataView(data);
@@ -49,8 +49,13 @@ function drawChart() {
 
     var piechart_options = {
         title: 'Alle Bilmodeller',
-        backgroundColor: 'whitesmoke'
+        backgroundColor: 'whitesmoke',
+        colors: [
+            '#28AEE4', '#1892C3', '#0B445B', '#63C7E7', '#49A1CA',
+            '#0B4D6B', '#9ADBF2', '#7BB6D7', '#1A6D94', '#285D73'
+        ]
     };
+
 
     var piechart = new google.visualization.PieChart(document.getElementById('piechart'));
 

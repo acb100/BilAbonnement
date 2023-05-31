@@ -130,9 +130,11 @@ public class HomeRepository {
     }
 
     public List<CurrentDayCars> getAllCurrentDayContractCars() {
-        String sql = "SELECT rental_contract.rental_contract_id, rental_contract.start_date, rental_contract.end_date, car.vin_nr, brand.brand_name\n" +
+        String sql = "SELECT rental_contract.rental_contract_id, rental_contract.start_date, rental_contract.end_date," +
+                " car.vin_nr, brand.brand_name, email, customer_name, model_name, customer_id\n" +
                 "FROM rental_contract\n" +
                 "JOIN car ON rental_contract.car_id = car.car_id\n" +
+                "JOIN customer USING (customer_id)\n" +
                 "JOIN model ON car.model_id = model.model_id\n" +
                 "JOIN brand ON model.brand_id = brand.brand_id\n" +
                 "WHERE rental_contract.start_date = CURDATE();";

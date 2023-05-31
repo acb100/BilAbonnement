@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Create Rental Contract</title>
+    <title>Registrer Lejekontrakt</title>
     <link rel="icon" type="image/x-icon" href="/img/favicon.png">
     <link rel="stylesheet" type="text/css" href="/styles/main.css">
     <link rel="stylesheet" type="text/css" href="/styles/creationForm.css">
@@ -25,7 +25,7 @@
             <li th:if="${session.employeeTypeId} =='2'"><a th:href="@{createDamageReport}">Lav Skadesrapport</a></li>
             <li th:if="${session.employeeTypeId} =='2'"><a th:href="@{viewRentalContracts}">Se Skadesrapporter</a></li>
             <li th:if="${session.employeeTypeId} =='3'"><a th:href="@{carOverview}">Overblik biler</a></li>
-            <li th:if="${session.employeeTypeId} =='3'"><a th:href="@{viewRentalContracts}">Registrer biler</a></li>
+            <li th:if="${session.employeeTypeId} =='3'"><a th:href="@{viewRentalContracts}">Se Lejekontrakter</a></li>
             <li><a th:href="@{/logout}">Logout</a></li>
         </ul>
     </nav>
@@ -33,7 +33,7 @@
         <div class="search-container">
             <form action="/search">
                 <select name="search_filter" id="search_filter">
-                    <option selected value="all">All</option>
+                    <option selected value="all">Alle</option>
                     <option value="lejekontrakter">Lejekontrakter</option>
                     <option value="skadesrapport">Skadesrapporter</option>
                     <option value="customer">Navn</option>
@@ -48,7 +48,7 @@
             <div class="dropdown">
                 <img src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png" alt="Profile pic" id="profile_pic">
                 <div class="dropdown-content">
-                    <a th:href="@{myProfile}">Profile</a>
+                    <a th:href="@{myProfile}">Profil</a>
                     <a th:href="@{logout}">Logout</a>
                 </div>
             </div>
@@ -61,21 +61,21 @@
     </div>
     <div class="form-container">
         <form action="/createRentalContract" method="post">
-            <label>Enter start date</label> <br>
+            <label>Indtast Start Dato</label> <br>
             <input type="date" name="start_date"> <br><br>
-            <label>Enter end date</label> <br>
+            <label>Indtast Slut Dato</label> <br>
             <input type="date" name="end_date"> <br><br>
-            <label>Choose subscription type</label><br>
+            <label>Vælg Abonnement Type</label><br>
             <select name="subscription_type" id="subscription_choice">
                 <option value="Limited">Limited</option>
                 <option value="Unlimited">Unlimited</option>
             </select> <br> <br>
-            <label>Choose Customer</label><br>
+            <label>Vælg Kunde</label><br>
             <select name="customer_id" id="customer_choice">
                 <option selected value=""></option>
                 <option th:each="customer: ${customers}" th:value="${customer.getCustomer_id}"><span th:text="${customer.getCustomer_name}"></span></option>
             </select> <br> <br>
-            <label>Choose Car</label><br>
+            <label>Vælg Bil</label><br>
             <select name="car_id" id="car_choice">
                 <option selected value=""></option>
                 <option th:each="car: ${cars}"  th:value="${car.car_id}"><span th:text="${car.model_name}"></span></option>

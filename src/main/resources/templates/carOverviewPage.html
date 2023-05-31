@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Create Rental Contract</title>
+    <title>Bil Oversigt</title>
     <link rel="icon" type="image/x-icon" href="/img/favicon.png">
     <link rel="stylesheet" type="text/css" href="/styles/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,7 +27,7 @@
             <li th:if="${session.employeeTypeId} =='2'"><a th:href="@{createDamageReport}">Lav Skadesrapport</a></li>
             <li th:if="${session.employeeTypeId} =='2'"><a th:href="@{viewRentalContracts}">Se Skadesrapporter</a></li>
             <li th:if="${session.employeeTypeId} =='3'"><a th:href="@{carOverview}" style="background-color: #05242f">Overblik biler</a></li>
-            <li th:if="${session.employeeTypeId} =='3'"><a th:href="@{viewRentalContracts}">Registrer biler</a></li>
+            <li th:if="${session.employeeTypeId} =='3'"><a th:href="@{viewRentalContracts}">Se Lejekontrakt</a></li>
             <li><a th:href="@{/logout}">Logout</a></li>
         </ul>
     </nav>
@@ -35,7 +35,7 @@
         <div class="search-container">
             <form action="/search">
                 <select name="search_filter" id="search_filter">
-                    <option selected value="all">All</option>
+                    <option selected value="all">Alle</option>
                     <option value="lejekontrakter">Lejekontrakter</option>
                     <option value="skadesrapport">Skadesrapporter</option>
                     <option value="customer">Navn</option>
@@ -65,7 +65,7 @@
             <tr>
                 <th>Billede</th>
                 <th>Vognnummer</th>
-                <th>Stelnummer</th>
+                <th>Nummerplade</th>
                 <th>Mærke</th>
                 <th>Model</th>
                 <th>Udstyrsniveau</th>
@@ -112,7 +112,7 @@
                 <td>
                     <form action="/deleteCar" method="POST" onsubmit="return confirm('Er du sikker på du vil slette denne bil?');">
                         <input type="hidden" name="carId" th:value="${cars.car_id}">
-                        <button type="submit" class="button_carRemove">Remove</button>
+                        <button type="submit" class="button_carRemove">Slet Bil</button>
                     </form>
                 </td>
             </tr>
