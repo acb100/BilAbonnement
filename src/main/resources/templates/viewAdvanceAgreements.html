@@ -66,14 +66,14 @@
             <th>Aftalt pris</th>
         </tr>
         </thead>
-        <tr th:each="agreements: ${advanceAgreements}">
+        <tr th:each="agreements: ${advanceAgreements}"> <!-- table with each loop of advance agreements -->
             <td th:text="${agreements.advance_agreement_id}"></td>
             <td th:text="${agreements.getBuyer_name}"></td>
             <td th:text="${agreements.car_id}"></td>
             <td th:text="${agreements.model_name}"></td>
             <td th:text="${agreements.advance_agreement_price}"></td>
             <td>
-                <a th:href="@{'/deleteAdvanceAgreement/' + ${agreements.advance_agreement_id}}">
+                <a th:href="@{'/deleteAdvanceAgreement/' + ${agreements.advance_agreement_id}}"> <!-- delete button  -->
                     <button class="delete_btn">Slet aftale</button>
                 </a>
             </td>

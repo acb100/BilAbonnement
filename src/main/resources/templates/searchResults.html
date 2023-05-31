@@ -60,8 +60,8 @@
 </header>
 <main>
     <h1>Søgeresultater:</h1>
-    <p th:if="${search_error}" style="color: red; font-weight: bold">Ingen Resultater fundet</p><br>
-    <div th:if="${results.getCars}">
+    <p th:if="${search_error}" style="color: red; font-weight: bold">Ingen Resultater fundet</p><br> <!-- error message for no results-->
+    <div th:if="${results.getCars}"> <!-- search table with each loop if searching for cars -->
         <h3>Biler:</h3>
         <table>
             <thead>
@@ -93,7 +93,7 @@
         </table>
     </div>
     <br>
-    <div th:if="${results.getRentalContracts}">
+    <div th:if="${results.getRentalContracts}"> <!-- search table with each loop if searching for rental contract -->
         <h3>Lejekontrakter:</h3>
         <table>
             <thead>
@@ -125,7 +125,7 @@
         </table>
     </div>
     <br>
-    <div th:if="${results.getCustomers}">
+    <div th:if="${results.getCustomers}"> <!-- search table with each loop if searching for customers -->
         <h3>Kunder:</h3>
         <table>
             <thead>
@@ -153,7 +153,7 @@
         </table>
     </div>
     <br>
-    <div th:if="${results.getDamageReports}">
+    <div th:if="${results.getDamageReports}"> <!-- search table with each loop if searching for damage reports -->
         <h3>Skadesrapporter:</h3>
         <table>
             <thead>

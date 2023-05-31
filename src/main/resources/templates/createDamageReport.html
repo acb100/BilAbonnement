@@ -60,7 +60,7 @@
     <h1>Opret Skadesrapport</h1>
   </div>
   <div class="form-container">
-    <form action="/createDamageReport" method="post">
+    <form action="/createDamageReport" method="post"> <!-- damage report creation form with drop down values for each rental contract -->
       <label>Vælg Lejekontrakt</label>
       <select name="rental_contract_id" id="rental_contract_id">
         <option selected value=""></option>
@@ -72,7 +72,7 @@
       <label>Overkørte KM</label>
       <input type="number" name="damage_report_overdriven_km" value="0" class="overdriven_km_input"> <br> <br>
       <label>Skader</label>
-      <div th:each="damageType: ${damageTypeList}">
+      <div th:each="damageType: ${damageTypeList}"> <!-- each loop for all damage types with a checkbox for each -->
         <input type="checkbox" th:value="${damageType.damage_type_id}" name="damage_type_ids" id="damage_type_box">
         <label><span th:text="${damageType.damage_type_name}"></span></label><br>
       </div> <br>

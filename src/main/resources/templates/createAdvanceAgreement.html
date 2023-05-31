@@ -44,7 +44,7 @@
       </form>
     </div>
     <div id="user_profile">
-      <p style="color: whitesmoke"><span th:text="${session.employeeUsername}"></span></p>
+      <p style="color: whitesmoke"><span th:text="${session.employeeUsername}"></span></p> <!-- shows the employees username -->
       <div class="dropdown">
         <img src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png" alt="Profile pic" id="profile_pic">
         <div class="dropdown-content">
@@ -59,7 +59,7 @@
   <div class="header_main">
     <h1>Opret forhåndsaftale</h1>
   </div>
-  <div class="form-container">
+  <div class="form-container"> <!-- advance agreement form with drop down selects for buyers and cars and input for price and comment -->
     <form action="/createAdvanceAgreement" method="post">
       <label>Vælg køber</label><br>
       <select name="buyer_id" id="customer_choice">

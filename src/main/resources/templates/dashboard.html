@@ -35,7 +35,7 @@
     </nav>
     <div id="top_header">
         <div class="search-container">
-            <form action="/search">
+            <form action="/search"> <!-- search form -->
                 <select name="search_filter" id="search_filter">
                     <option selected value="all">Alle</option>
                     <option value="lejekontrakter">Lejekontrakter</option>
@@ -77,7 +77,7 @@
             <input type="hidden" id="allCars" th:value="${allCars}">
         </div>
     </div>
-    <div class="table_container">
+    <div class="table_container"> <!-- th:if shows the cars to be made ready on the contract start date -->
         <div th:if="${allCurrentDayCars}">
             <h2>Biler der skal klargøres i dag:</h2>
             <table>
@@ -94,7 +94,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="allCurrentCars : ${allCurrentDayCars}">
+                <tr th:each="allCurrentCars : ${allCurrentDayCars}"> <!-- showed as a table -->
                     <td th:text="${allCurrentCars.rental_contract_id}"></td>
                     <td th:text="${allCurrentCars.email}"></td>
                     <td th:text="${allCurrentCars.customer_name}"></td>
@@ -108,7 +108,7 @@
             </table>
         </div>
     </div>
-    <div th:if="${showCarSum}">
+    <div th:if="${showCarSum}"> <!-- the sum of the leased cars -->
         <p>Sum af udlejede biler:  <span th:text="${carSum}"></span> DKK</p>
     </div>
 </main>

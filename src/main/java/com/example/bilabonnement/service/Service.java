@@ -39,6 +39,12 @@ public class Service {
     public List<Car> getAllCars(){
         return repo.fetchAllCars();
     }
+
+    /**
+     * service method for ordering cars by ongoing by using the Comparator interface to sort by true/false. Also puts nulls last
+     * by using the compareTo method from the Boolean class
+     * @return returned sorted list
+     */
     public List<Car> orderCarsByOngoing(){
         List<Car> data = getAllCars();
         data.sort(Comparator.comparing(Car::getOngoing, Comparator.nullsLast(Boolean::compareTo)));
@@ -50,6 +56,10 @@ public class Service {
 
     public List<Car> getAllUnusedCars() { return repo.getAllUnusedCars(); }
 
+    /**
+     * service method for getting the count of the different car models and adding them to the arraylist to be showed on the dashboard
+     * @return returns the arraylist of car objects
+     */
     public List<CarWithCount> getAllCarModels() {
         List<Car> carModels = repo.getAllCarModels();
         List<CarWithCount> carsWithCount = new ArrayList<>();
@@ -96,6 +106,12 @@ public class Service {
         return repo.getAllCurrentDayContractCars();
     }
 
+    /**
+     * service method for returning the search parameter data
+     * @param searchFilter the filter for the search e.g. all, which searches all tables
+     * @param keyword the passed keyword for the search
+     * @return returns the searchResult object for the search
+     */
     public SearchResult searchForKeyword(String searchFilter, String keyword) {
         SearchResult searchResults = new SearchResult();
         switch (searchFilter) {

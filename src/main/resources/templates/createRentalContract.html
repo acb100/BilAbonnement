@@ -60,7 +60,7 @@
         <h1>Opret Lejekontrakt</h1>
     </div>
     <div class="form-container">
-        <form action="/createRentalContract" method="post">
+        <form action="/createRentalContract" method="post"> <!-- rental contract cration form with drop down for customers and cars -->
             <label>Indtast Start Dato</label> <br>
             <input type="date" name="start_date"> <br><br>
             <label>Indtast Slut Dato</label> <br>
@@ -80,7 +80,7 @@
                 <option selected value=""></option>
                 <option th:each="car: ${cars}"  th:value="${car.car_id}"><span th:text="${car.model_name}"></span></option>
             </select> <br><br>
-            <input type="text" th:value="${session.employeeId}" name="employee_id" style="display:none">
+            <input type="text" th:value="${session.employeeId}" name="employee_id" style="display:none"> <!-- automatically adds the employeeid to the contract -->
             <input type="submit" value="Create" class="create_contract_btn">
         </form>
     </div>
