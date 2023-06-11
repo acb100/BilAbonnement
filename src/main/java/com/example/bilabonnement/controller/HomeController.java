@@ -196,4 +196,10 @@ public class HomeController {
         boolean deleted = service.deleteAdvanceAgreement(agreementId);
         return loginCheck("viewAdvanceAgreements");
     }
+
+    @GetMapping("/viewDamageReports")
+    public String viewDamageReports(Model model){
+        model.addAttribute("damageReportList", service.getAllDamageReports());
+        return loginCheck("damageReportsOverview");
+    }
 }

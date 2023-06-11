@@ -122,4 +122,8 @@ public class Service {
     public Boolean deleteAdvanceAgreement(int advanceAgreementId){
         return repo.deleteAdvanceAgreement(advanceAgreementId);
     }
+
+    public List<DamageReport> getAllDamageReports() {
+        return repo.getAllDamageReports();
+    }
 }

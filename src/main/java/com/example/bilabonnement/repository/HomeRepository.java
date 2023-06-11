@@ -235,4 +235,12 @@ public class HomeRepository {
         String sql = "DELETE FROM advance_agreement WHERE advance_agreement_id = ?";
         return template.update(sql, advanceAgreementId) > 0;
     }
+
+    public List<DamageReport> getAllDamageReports() {
+        String sql = "SELECT damage_report_id, damage_report_comment, damage_report_overdriven_km, employee_id " +
+                "FROM damage_report " +
+                "ORDER BY damage_report_id";
+        RowMapper<DamageReport> rowMapper = new BeanPropertyRowMapper<>(DamageReport.class);
+        return template.query(sql, rowMapper);
+    }
 }
