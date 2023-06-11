@@ -66,7 +66,7 @@ public class HomeController {
         try {
             if (session.getAttribute("employeeTypeId").equals(3)) {
                 model.addAttribute("showCarSum", true);
-                model.addAttribute("carSum", service.fetchSumOfLeasedCars());
+                model.addAttribute( "carSum", service.fetchSumOfLeasedCars());
             }
 
         } catch (NullPointerException ignored) {
@@ -112,7 +112,6 @@ public class HomeController {
     @PostMapping("/createDamageReport")
     public String createDamageReport(@ModelAttribute DamageReport damageReport,
                                      @RequestParam(name = "rental_contract_id") int rentalContractId) {
-        System.out.println(Arrays.toString(damageReport.getDamage_type_ids()));
         service.updateDamageReport(damageReport, rentalContractId);
         return loginCheck("dashboard");
     }
@@ -149,13 +148,6 @@ public class HomeController {
 
     @PostMapping("/updateStatus")
     public String updateStatus(@ModelAttribute Car car) {
-        System.out.println("Vin_nr: " + car.getVin_nr());
-        System.out.println("Equipment: " + car.getEquipment_level());
-        System.out.println("base_price: " + car.getBase_price());
-        System.out.println("vat: " + car.getVat());
-        System.out.println("emission: " + car.getEmission());
-        System.out.println("model_id: " + car.getModel_id());
-
             service.addCar(car);
             return "redirect:/carOverview";
     }

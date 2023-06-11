@@ -29,7 +29,6 @@ public class HomeRepository {
     public void addCar(Car car) {
         String sql = "INSERT INTO car (vin_nr, equipment_level, base_price, vat," +
                 "emission, model_id) VALUES(?,?,?,?,?,?)";
-        System.out.println("Vin_nr: " + car.getVin_nr());
         template.update(sql, car.getVin_nr(), car.getEquipment_level(), car.getBase_price(),
                 car.getVat(), car.getEmission(), car.getModel_id());
     }
@@ -86,11 +85,11 @@ public class HomeRepository {
     }
 
     public List<Car> getAllCarModels() {
-        String sql = "SELECT b.brand_name, m.model_name, COUNT(*) AS model_count\n" +
-                "FROM brand b\n" +
-                "JOIN model m ON b.brand_id = m.brand_id\n" +
-                "JOIN car c ON m.model_id = c.model_id\n" +
-                "GROUP BY b.brand_name, m.model_name;\n";
+        String sql = "SELECT b.brand_name, m.model_name, COUNT(*) AS model_count " +
+                "FROM brand b " +
+                "JOIN model m ON b.brand_id = m.brand_id " +
+                "JOIN car c ON m.model_id = c.model_id " +
+                "GROUP BY b.brand_name, m.model_name; ";
         RowMapper<Car> rowMapper = new BeanPropertyRowMapper<>(Car.class);
         return template.query(sql, rowMapper);
     }
