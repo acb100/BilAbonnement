@@ -20,6 +20,10 @@ public class Service {
         return repo.getAllDamageTypes();
     }
 
+    public Boolean employeeExists(String employeeUsername, String employeePassword) {
+        return repo.employeeExists(employeeUsername, employeePassword);
+    }
+
     public int getEmployeeID(String username){
         return repo.getEmployee(username).getEmployee_id();
     }
@@ -28,9 +32,7 @@ public class Service {
         return repo.getEmployee(username);
     }
 
-    public Boolean employeeExists(String employeeUsername, String employeePassword) {
-        return repo.employeeExists(employeeUsername, employeePassword);
-    }
+
 
     public List<Customer> getAllCustomers(){
         return repo.getAllCustomers();
