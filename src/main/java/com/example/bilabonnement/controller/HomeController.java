@@ -200,6 +200,12 @@ public class HomeController {
     @GetMapping("/viewDamageReports")
     public String viewDamageReports(Model model){
         model.addAttribute("damageReportList", service.getAllDamageReports());
-        return loginCheck("damageReportsOverview");
+        return loginCheck("damageReportOverview");
+    }
+
+    @GetMapping("/deleteDamageReport/{damageReportId}")
+    public String deleteDamageReport(@PathVariable("damageReportId") int damageReportId){
+        service.deleteDamageReport(damageReportId);
+        return "redirect:/viewDamageReports";
     }
 }

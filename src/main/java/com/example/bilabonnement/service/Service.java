@@ -124,6 +124,10 @@ public class Service {
     }
 
     public List<DamageReport> getAllDamageReports() {
-        return repo.getAllDamageReports();
+        return repo.getAllActiveDamageReports();
+    }
+
+    public void deleteDamageReport(int damageReportId) {
+        repo.deleteDamageReport(damageReportId);
     }
 }

@@ -236,11 +236,17 @@ public class HomeRepository {
         return template.update(sql, advanceAgreementId) > 0;
     }
 
-    public List<DamageReport> getAllDamageReports() {
+    public List<DamageReport> getAllActiveDamageReports() {
         String sql = "SELECT damage_report_id, damage_report_comment, damage_report_overdriven_km, employee_id " +
                 "FROM damage_report " +
+                "WHERE employee_id IS NOT NULL " +
                 "ORDER BY damage_report_id";
         RowMapper<DamageReport> rowMapper = new BeanPropertyRowMapper<>(DamageReport.class);
         return template.query(sql, rowMapper);
+    }
+
+    public void deleteDamageReport(int damageReportId) {
+        String sql = "DELETE FROM damage_report WHERE damage_report_id = ?";
+        template.update(sql, damageReportId);
     }
 }

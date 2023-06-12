@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Create Advance Contract</title>
+    <title>SkadesRapporter</title>
     <link rel="icon" type="image/x-icon" href="/img/favicon.png">
     <link rel="stylesheet" type="text/css" href="/styles/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,13 +17,16 @@
     <nav id="sidenav">
         <img src="img/small_logo_transparent.png" alt="Logo" id="small_logo">
         <ul>
-            <li><a th:href="@{dashboard}" >Dashboard</a></li>
-            <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{createRentalContract}">Registrer Lejekontrakt</a></li>
+            <li><a th:href="@{dashboard}">Dashboard</a></li>
+            <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{createRentalContract}">Registrer Lejekontrakt</a>
+            </li>
             <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{viewRentalContracts}">Se Lejekontrakter</a></li>
-            <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{createAdvanceAgreement}">Lav forhåndsaftale</a></li>
-            <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{viewAdvanceAgreements}" style="background-color: #05242f">Se forhåndsaftale</a></li>
+            <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{createAdvanceAgreement}">Lav forhåndsaftale</a>
+            </li>
+            <li th:if="${session.employeeTypeId} =='1'"><a th:href="@{viewAdvanceAgreements}">Se forhåndsaftale</a></li>
             <li th:if="${session.employeeTypeId} =='2'"><a th:href="@{createDamageReport}">Lav Skadesrapport</a></li>
-            <li th:if="${session.employeeTypeId} =='2'"><a th:href="@{viewDamageReports}">Se Skadesrapporter</a></li>
+            <li th:if="${session.employeeTypeId} =='2'"><a th:href="@{viewDamageReports}"
+                                                           style="background-color: #05242f">Se Skadesrapporter</a></li>
             <li th:if="${session.employeeTypeId} =='3'"><a th:href="@{carOverview}">Overblik biler</a></li>
             <li th:if="${session.employeeTypeId} =='3'"><a th:href="@{viewRentalContracts}">Se Lejekontrakter</a></li>
             <li><a th:href="@{/logout}">Logout</a></li>
@@ -46,7 +49,8 @@
         <div id="user_profile">
             <p style="color: whitesmoke"><span th:text="${session.employeeUsername}"></span></p>
             <div class="dropdown">
-                <img src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png" alt="Profile pic" id="profile_pic">
+                <img src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png" alt="Profile pic"
+                     id="profile_pic">
                 <div class="dropdown-content">
                     <a th:href="@{myProfile}">Profil</a>
                     <a th:href="@{logout}">Logout</a>
@@ -59,27 +63,29 @@
     <table>
         <thead>
         <tr>
-            <th>Forhåndsaftale nr.</th>
-            <th>Køber</th>
-            <th>Bil</th>
-            <th>Model</th>
-            <th>Aftalt pris</th>
+            <th>ID</th>
+            <th>Kommentar</th>
+            <th>Overkørte KM</th>
+            <th>Medarbejder ID</th>
         </tr>
         </thead>
-        <tr th:each="agreements: ${advanceAgreements}">
-            <td th:text="${agreements.advance_agreement_id}"></td>
-            <td th:text="${agreements.getBuyer_name}"></td>
-            <td th:text="${agreements.car_id}"></td>
-            <td th:text="${agreements.model_name}"></td>
-            <td th:text="${agreements.advance_agreement_price}"></td>
+        <tbody>
+        <tr th:each="damageReport: ${damageReportList}">
+            <td th:text="${damageReport.damage_report_id}"></td>
+            <td th:text="${damageReport.damage_report_comment}"></td>
+            <td th:text="${damageReport.damage_report_overdriven_km}"></td>
+            <td th:text="${damageReport.employee_id}"></td>
             <td>
-                <a th:href="@{'/deleteAdvanceAgreement/' + ${agreements.advance_agreement_id}}">
-                    <button class="delete_btn">Slet aftale</button>
+                <a th:href="@{'/deleteDamageReport/' + ${damageReport.damage_report_id}}">
+                    <button class="delete_btn">Slet Skadesrapport</button>
                 </a>
             </td>
         </tr>
+        </tbody>
     </table>
 </main>
+<footer>
 
+</footer>
 </body>
 </html>
